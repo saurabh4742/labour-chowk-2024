@@ -25,8 +25,6 @@ function LaborPortal({setisLabor,setisEmployer}) {
       return (<ProfileAsLabor/>)
     }
     else if (searchQuery) {
-      
-        setviewDetail(undefined)
       return  (
         <JobCard setviewDetail={setviewDetail} Jobs={filteredJobs} isLarge={false} Title={"Vacancy search results"} />
       );

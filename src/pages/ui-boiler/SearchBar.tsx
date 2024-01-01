@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Input } from '@/components/ui/input';
 
 function SearchBar({ setSearchQuery }) {

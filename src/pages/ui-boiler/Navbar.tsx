@@ -33,6 +33,7 @@ function Navbar({setCreateVacancy,setviewProfile,setviewDetail, isEmployer ,setI
             {isEmployer && (
               <div>
                 <MenubarItem onClick={()=>{
+                  setviewDetail(undefined)
                   setCreateVacancy(true);
                   setviewProfile(false)
                 }}>Create a vacancy</MenubarItem>
@@ -40,6 +41,7 @@ function Navbar({setCreateVacancy,setviewProfile,setviewDetail, isEmployer ,setI
               </div>
             )}
             <MenubarItem onClick={()=>{
+              setviewDetail(undefined)
               setCreateVacancy(false)
               setviewProfile(true);
             }}>Profile</MenubarItem>
@@ -47,6 +49,7 @@ function Navbar({setCreateVacancy,setviewProfile,setviewDetail, isEmployer ,setI
             <MenubarItem>Support</MenubarItem>
             <MenubarSeparator />
             <MenubarItem onClick={()=>{
+              setviewDetail(undefined)
               setIsLogin(false)
               setviewProfile(false);
               }} className="bg-red-600 text-slate-50">
