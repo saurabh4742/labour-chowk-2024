@@ -15,6 +15,7 @@ function LaborPortal({setisLabor,setisEmployer}) {
   const [searchQuery, setSearchQuery] = useState('');
   const [viewDetail,setviewDetail]=useState()
   const [viewProfile,setviewProfile]=useState(false)
+  const [CreateVacancy,setCreateVacancy]=useState(false);
   const filteredJobs = Jobs.filter(job =>
     job.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
@@ -44,7 +45,7 @@ function LaborPortal({setisLabor,setisEmployer}) {
     <div>
       {isLogin ? (
         <div>
-          <Navbar setviewProfile={setviewProfile} setviewDetail={setviewDetail} isEmployer={false} setIsLogin={setIsLogin} />
+          <Navbar setCreateVacancy={setCreateVacancy}  setviewProfile={setviewProfile} setviewDetail={setviewDetail} isEmployer={false} setIsLogin={setIsLogin} />
           <Label className='flex justify-center w-full mt-2 mb-2 text-2xl'>Kaam Dhundhe</Label>
           <SearchBar setSearchQuery={setSearchQuery} />
           {viewDetail==undefined? renderJobCards():<ViewDetailAsLabor job={viewDetail}></ViewDetailAsLabor>}

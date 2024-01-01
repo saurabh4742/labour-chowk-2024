@@ -9,7 +9,7 @@ import {
   MenubarTrigger,
 } from "@/components/ui/menubar";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-function Navbar({setviewProfile,setviewDetail, isEmployer ,setIsLogin }) {
+function Navbar({setCreateVacancy,setviewProfile,setviewDetail, isEmployer ,setIsLogin }) {
   return (
     <div>
       <Menubar className="justify-between bg-white shadow-md ring-2 ring-gray-900 ring-opacity-40">
@@ -27,15 +27,20 @@ function Navbar({setviewProfile,setviewDetail, isEmployer ,setIsLogin }) {
             <MenubarItem onClick={()=>{
                 setviewDetail(undefined)
                 setviewProfile(false)
+                setCreateVacancy(false);
             }}>Home</MenubarItem>
             <MenubarSeparator />
             {isEmployer && (
               <div>
-                <MenubarItem>Create a vacancy</MenubarItem>
+                <MenubarItem onClick={()=>{
+                  setCreateVacancy(true);
+                  setviewProfile(false)
+                }}>Create a vacancy</MenubarItem>
                 <MenubarSeparator />
               </div>
             )}
             <MenubarItem onClick={()=>{
+              setCreateVacancy(false)
               setviewProfile(true);
             }}>Profile</MenubarItem>
             <MenubarSeparator />

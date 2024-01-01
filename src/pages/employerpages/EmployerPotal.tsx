@@ -8,18 +8,23 @@ import SignupasEmployer from './SignupasEmployer';
 import LaborCard from '../ui-boiler/LaborCard';
 import ViewDetailAsEmployer from '../ui-boiler/ViewDetailAsEmployer';
 import ProfileAsEmployer from './ProfileAsEmployer';
+import CreateaVacancy from '../ui-boiler/CreateaVacancy';
 function EmployerPotal({setisLabor,setisEmployer}) {
   const [isLogin, setIsLogin] = useState(false);
   const [haveAnAccount, setHaveAnAccount] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
   const [viewDetail,setviewDetail]=useState();
   const [viewProfile,setviewProfile]=useState(false)
+  const [CreateVacancy,setCreateVacancy]=useState(false);
   const filteredWorkers = Workers.filter(worker =>
     worker.profession.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   const renderLaborCards = () => {
-    if(viewProfile){
+    if (CreateVacancy){
+      return(<CreateaVacancy/>)
+    }
+    else if(viewProfile){
       return (<ProfileAsEmployer/>)
     }
     else if (searchQuery) {
@@ -43,7 +48,7 @@ function EmployerPotal({setisLabor,setisEmployer}) {
     <div>
       {isLogin ? (
         <div>
-          <Navbar setviewProfile={setviewProfile} setviewDetail={setviewDetail} isEmployer={true} setIsLogin={setIsLogin}/>
+          <Navbar setCreateVacancy={setCreateVacancy} setviewProfile={setviewProfile} setviewDetail={setviewDetail} isEmployer={true} setIsLogin={setIsLogin}/>
           <Label className='flex justify-center w-full mt-2 mb-2 text-2xl'>Apne liye Majdur Dhundhe</Label>
           <SearchBar setSearchQuery={setSearchQuery} />
           {viewDetail==undefined? renderLaborCards():<ViewDetailAsEmployer worker={viewDetail}></ViewDetailAsEmployer>}

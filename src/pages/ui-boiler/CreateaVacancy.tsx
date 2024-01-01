@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 function CreateaVacancy() {
   return (
-    <div className="justify-center flex h-[100vh] items-center ">
+    <div className="flex justify-center w-full mt-4 ">
       <Card className="w-[350px] ">
         <CardHeader >
           <CardTitle className="flex justify-center space-y-1.5">
