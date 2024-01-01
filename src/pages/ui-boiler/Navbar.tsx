@@ -9,7 +9,7 @@ import {
   MenubarTrigger,
 } from "@/components/ui/menubar";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-function Navbar({setviewDetail, isEmployer ,setIsLogin }) {
+function Navbar({setviewProfile,setviewDetail, isEmployer ,setIsLogin }) {
   return (
     <div>
       <Menubar className="justify-between bg-white shadow-md ring-2 ring-gray-900 ring-opacity-40">
@@ -26,6 +26,7 @@ function Navbar({setviewDetail, isEmployer ,setIsLogin }) {
           <MenubarContent>
             <MenubarItem onClick={()=>{
                 setviewDetail(undefined)
+                setviewProfile(false)
             }}>Home</MenubarItem>
             <MenubarSeparator />
             {isEmployer && (
@@ -34,11 +35,16 @@ function Navbar({setviewDetail, isEmployer ,setIsLogin }) {
                 <MenubarSeparator />
               </div>
             )}
-            <MenubarItem>Profile</MenubarItem>
+            <MenubarItem onClick={()=>{
+              setviewProfile(true);
+            }}>Profile</MenubarItem>
             <MenubarSeparator />
             <MenubarItem>Support</MenubarItem>
             <MenubarSeparator />
-            <MenubarItem onClick={()=>{setIsLogin(false)}} className="bg-red-600 text-slate-50">
+            <MenubarItem onClick={()=>{
+              setIsLogin(false)
+              setviewProfile(false);
+              }} className="bg-red-600 text-slate-50">
               Logout
             </MenubarItem>
             <MenubarSeparator />

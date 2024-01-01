@@ -7,18 +7,23 @@ import Navbar from '../ui-boiler/Navbar';
 import SearchBar from '../ui-boiler/SearchBar';
 import { Label } from '@/components/ui/label';
 import ViewDetailAsLabor from '../ui-boiler/ViewDetailAsLabor';
+import ProfileAsLabor from './ProfileAsLabor';
 
 function LaborPortal({setisLabor,setisEmployer}) {
   const [isLogin, setIsLogin] = useState(false);
   const [haveAnAccount, setHaveAnAccount] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
   const [viewDetail,setviewDetail]=useState()
+  const [viewProfile,setviewProfile]=useState(false)
   const filteredJobs = Jobs.filter(job =>
     job.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   const renderJobCards = () => {
-    if (searchQuery) {
+    if(viewProfile){
+      return (<ProfileAsLabor/>)
+    }
+    else if (searchQuery) {
       
         setviewDetail(undefined)
       return  (
@@ -39,7 +44,7 @@ function LaborPortal({setisLabor,setisEmployer}) {
     <div>
       {isLogin ? (
         <div>
-          <Navbar setviewDetail={setviewDetail} isEmployer={false} setIsLogin={setIsLogin} />
+          <Navbar setviewProfile={setviewProfile} setviewDetail={setviewDetail} isEmployer={false} setIsLogin={setIsLogin} />
           <Label className='flex justify-center w-full mt-2 mb-2 text-2xl'>Kaam Dhundhe</Label>
           <SearchBar setSearchQuery={setSearchQuery} />
           {viewDetail==undefined? renderJobCards():<ViewDetailAsLabor job={viewDetail}></ViewDetailAsLabor>}
