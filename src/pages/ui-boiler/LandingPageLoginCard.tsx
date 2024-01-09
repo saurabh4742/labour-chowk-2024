@@ -9,25 +9,19 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-function LandingPageLoginCard({setisLabor,setisEmployer}) {
-  const handleLabor=()=>{
-    setisLabor(true);
-    setisEmployer(false)
-  }
-  const handleEmployer=()=>{
-    setisLabor(false);
-    setisEmployer(true)
-    
-  }
+import { Link } from "react-router-dom";
+function LandingPage() {
   return (
     <Card className=" w-[350px] h-[50vh] bg-white shadow-md ring-2 ring-gray-900 ring-opacity-40">
       <CardHeader>
-        <CardTitle className="flex justify-center space-y-1.5">Welcome to Labor Chowk</CardTitle>
+        <CardTitle className="flex justify-center space-y-1.5">
+          Welcome to Labor Chowk
+        </CardTitle>
         <CardDescription className="flex justify-center space-y-1.5">
           Dive into new opportunities with one-click.
         </CardDescription>
       </CardHeader>
-      <CardContent >
+      <CardContent>
         <div className="grid items-center w-full gap-5">
           <div className="flex justify-center h-20 space-y-1.5">
             <Avatar className="w-20 h-20">
@@ -36,14 +30,19 @@ function LandingPageLoginCard({setisLabor,setisEmployer}) {
             </Avatar>
           </div>
           <div className="flex flex-col space-y-1.5">
-            <Button onClick={handleLabor}>
-              <User className="w-4 h-4 mr-2" />Continue as labor
-            </Button>
+            <Link className="flex justify-center" to="/labor">
+              <Button>
+                <User className="w-4 h-4 mr-2" />
+                Continue as labor
+              </Button>
+            </Link>
           </div>
           <div className="flex flex-col space-y-1.5">
-            <Button onClick={handleEmployer}>
-              <Users className="w-4 h-4 mr-2" /> Continue as employer
-            </Button>
+            <Link className="flex justify-center" to="/employer">
+              <Button>
+                <Users className="w-4 h-4 mr-2" /> Continue as employer
+              </Button>
+            </Link>
           </div>
         </div>
       </CardContent>
@@ -51,4 +50,4 @@ function LandingPageLoginCard({setisLabor,setisEmployer}) {
   );
 }
 
-export default LandingPageLoginCard;
+export default LandingPage;

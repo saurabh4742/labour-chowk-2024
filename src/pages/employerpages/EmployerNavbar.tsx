@@ -9,7 +9,8 @@ import {
   MenubarTrigger,
 } from "@/components/ui/menubar";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-function Navbar({setCreateVacancy,setviewProfile,setviewDetail, isEmployer ,setIsLogin }) {
+import { Link } from "react-router-dom";
+function EmployerNavbar() {
   return (
     <div>
       <Menubar className="justify-between bg-white shadow-md ring-2 ring-gray-900 ring-opacity-40">
@@ -24,35 +25,15 @@ function Navbar({setCreateVacancy,setviewProfile,setviewDetail, isEmployer ,setI
             <Menu />
           </MenubarTrigger>
           <MenubarContent>
-            <MenubarItem onClick={()=>{
-                setviewDetail(undefined)
-                setviewProfile(false)
-                setCreateVacancy(false);
-            }}>Home</MenubarItem>
+            <MenubarItem><Link to="/employer">Home</Link></MenubarItem>
             <MenubarSeparator />
-            {isEmployer && (
-              <div>
-                <MenubarItem onClick={()=>{
-                  setviewDetail(undefined)
-                  setCreateVacancy(true);
-                  setviewProfile(false)
-                }}>Create a vacancy</MenubarItem>
-                <MenubarSeparator />
-              </div>
-            )}
-            <MenubarItem onClick={()=>{
-              setviewDetail(undefined)
-              setCreateVacancy(false)
-              setviewProfile(true);
-            }}>Profile</MenubarItem>
+            <MenubarItem><Link to="/employer/profile">Profile</Link></MenubarItem>
+            <MenubarSeparator />
+            <MenubarItem><Link to="/employer/createavacancy">Create a vacancy</Link></MenubarItem>
             <MenubarSeparator />
             <MenubarItem>Support</MenubarItem>
             <MenubarSeparator />
-            <MenubarItem onClick={()=>{
-              setviewDetail(undefined)
-              setIsLogin(false)
-              setviewProfile(false);
-              }} className="bg-red-600 text-slate-50">
+            <MenubarItem className="bg-red-600 text-slate-50">
               Logout
             </MenubarItem>
             <MenubarSeparator />
@@ -63,4 +44,4 @@ function Navbar({setCreateVacancy,setviewProfile,setviewDetail, isEmployer ,setI
   );
 }
 
-export default Navbar;
+export default EmployerNavbar;

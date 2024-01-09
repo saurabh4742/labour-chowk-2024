@@ -1,22 +1,23 @@
-import { Phone ,ToggleRight} from "lucide-react";
+import { Phone, ToggleRight } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-function SignupasEmployer({setHaveanAccount,setisLabor,setisEmployer}) {
-  const handleSignup=()=>{
-    setHaveanAccount(true);
-  }
+import { Link } from "react-router-dom";
+function SignupasEmployer() {
+  const handleSignup = () => {
+    //perform register logic
+  };
   return (
     <div className="justify-center flex h-[100vh] items-center">
       <Card className="w-[350px] bg-white shadow-md ring-2 ring-gray-900 ring-opacity-40 ">
         <CardHeader>
-        <Button  onClick={()=>{
-          setisLabor(true)
-          setisEmployer(false)
-        }}>
+          <Link className="flex justify-center" to="/labor/signup">
+            <Button>
               <ToggleRight className="w-4 h-4 mr-2" />
               Switch to labor
             </Button>
+          </Link>
+
           <CardTitle className="flex justify-center space-y-1.5">
             Signup
           </CardTitle>
@@ -33,14 +34,16 @@ function SignupasEmployer({setHaveanAccount,setisLabor,setisEmployer}) {
               <Phone className="w-4 h-4 mr-2" />
               Signup as employer
             </Button>
-            <Button onClick={handleSignup} variant="link">
-            Already have an account? Login now!
-            </Button>
+            <Link className="flex justify-center" to="/employer/login">
+              <Button variant="link">
+                Already have an account? Login now!
+              </Button>
+            </Link>
           </div>
         </CardContent>
       </Card>
     </div>
-  )
+  );
 }
 
-export default SignupasEmployer
+export default SignupasEmployer;

@@ -2,12 +2,12 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
-
+import { MyContextProvider } from './pages/MyContext.tsx'
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <div >
+    <MyContextProvider>
     <App />
-    </div>
+  </MyContextProvider>
     
   </React.StrictMode>,
 )

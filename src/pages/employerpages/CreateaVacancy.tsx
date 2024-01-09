@@ -3,6 +3,9 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 function CreateaVacancy() {
+  const handleVacancy=()=>{
+
+  }
   return (
     <div className="flex justify-center w-full mt-4 ">
       <Card className="w-[350px] ">
@@ -18,7 +21,7 @@ function CreateaVacancy() {
             <Input type="text" placeholder="Office Address" />
             <Input type="number" placeholder="Area Pincode" />
             <Input type="number" placeholder="Daily Salary in ₹" />            
-            <Button>
+            <Button onClick={handleVacancy}>
               <Send className="w-4 h-4 mr-2" />
               Create a vacancy
             </Button>

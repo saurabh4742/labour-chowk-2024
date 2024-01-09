@@ -1,67 +1,14 @@
-import React, { useState } from 'react'
-import Navbar from '../ui-boiler/Navbar'
-import Workers from '@/assets/Test-Worker-Data';
-import SearchBar from '../ui-boiler/SearchBar';
-import { Label } from '@radix-ui/react-label';
-import LoginasEmployer from './LoginasEmployer';
-import SignupasEmployer from './SignupasEmployer';
-import LaborCard from '../ui-boiler/LaborCard';
-import ViewDetailAsEmployer from '../ui-boiler/ViewDetailAsEmployer';
-import ProfileAsEmployer from './ProfileAsEmployer';
-import CreateaVacancy from '../ui-boiler/CreateaVacancy';
-function EmployerPotal({setisLabor,setisEmployer}) {
-  const [isLogin, setIsLogin] = useState(false);
-  const [haveAnAccount, setHaveAnAccount] = useState(true);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [viewDetail,setviewDetail]=useState();
-  const [viewProfile,setviewProfile]=useState(false)
-  const [CreateVacancy,setCreateVacancy]=useState(false);
-  const filteredWorkers = Workers.filter(worker =>
-    worker.profession.toLowerCase().includes(searchQuery.toLowerCase())
-  );
-
-  const renderLaborCards = () => {
-    if (CreateVacancy){
-      return(<CreateaVacancy/>)
-    }
-    else if(viewProfile){
-      return (<ProfileAsEmployer/>)
-    }
-    else if (searchQuery) {
-      // If there's a search query, render matching job cards
-      return  (
-        <LaborCard setviewDetail={setviewDetail} Workers={filteredWorkers} isLarge={false} Title={"Search results"} />
-      );
-    } else {
-      // If no search query, display the default three job cards
-      return (
-        <>
-          <LaborCard setviewDetail={setviewDetail}  Workers={Workers} isLarge={true} Title={"Search results"}/>
-          <LaborCard setviewDetail={setviewDetail} Workers={Workers} isLarge={false} Title={"Recent"} />
-          <LaborCard setviewDetail={setviewDetail} Workers={Workers} isLarge={false} Title={"Worker near me"} />
-        </>
-      );
-    }
-  };
-
+import React, { useState } from "react";
+import EmployerNavbar from "./EmployerNavbar";
+import { Outlet } from "react-router-dom";
+function EmployerPotal() {
+  const user = null;
   return (
     <div>
-      {isLogin ? (
-        <div>
-          <Navbar setCreateVacancy={setCreateVacancy} setviewProfile={setviewProfile} setviewDetail={setviewDetail} isEmployer={true} setIsLogin={setIsLogin}/>
-          <Label className='flex justify-center w-full mt-2 mb-2 text-2xl'>Apne liye Majdur Dhundhe</Label>
-          <SearchBar setSearchQuery={setSearchQuery} />
-          {viewDetail==undefined? renderLaborCards():<ViewDetailAsEmployer worker={viewDetail}></ViewDetailAsEmployer>}
-        </div>
-      ) : (
-        haveAnAccount ? (
-          <LoginasEmployer setisLabor={setisLabor} setisEmployer={setisEmployer} setisLogin={setIsLogin} setHaveanAccount={setHaveAnAccount} />
-        ) : (
-          <SignupasEmployer setisLabor={setisLabor} setisEmployer={setisEmployer} setHaveanAccount={setHaveAnAccount} />
-        )
-      )}
+      {user && <EmployerNavbar />}
+      <Outlet />
     </div>
   );
 }
 
-export default EmployerPotal
+export default EmployerPotal;
