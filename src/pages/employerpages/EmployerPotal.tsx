@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import EmployerNavbar from "./EmployerNavbar";
 import { Outlet } from "react-router-dom";
+import { useMyContext } from "../MyContext";
 function EmployerPotal() {
-  const user = null;
+  const { userEmployer} = useMyContext();
   return (
     <div>
-      {user && <EmployerNavbar />}
+      {userEmployer._id && <EmployerNavbar />}
       <Outlet />
     </div>
   );

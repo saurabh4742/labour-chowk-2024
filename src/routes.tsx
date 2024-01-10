@@ -19,10 +19,12 @@ import EmployerHome from "./pages/employerpages/EmployerHome";
 import CreateaVacancy from "./pages/employerpages/CreateaVacancy";
 import LaborDetails from "./pages/employerpages/LaborDetails";
 import JobDetails from "./pages/laborpages/JobDetails";
+import SupportPage from "./pages/ui-boiler/SupportPage";
 
 const AppRoutes = () => {
   return (
     <ReactRoutes>
+
       <Route path="/" element={<Landing />} />
       <Route path="/labor" element={<LaborPortal />}>
       <Route index element={<LaborHome />} />
@@ -40,6 +42,7 @@ const AppRoutes = () => {
       <Route path=":id" element={<LaborDetails/>}/>
       </Route>
       <Route path="/loading" element={<Loading />} />
+      <Route path="/support" element={<SupportPage/>}/>
       <Route path="*" element={<div className="flex justify-center w-full text-2xl text-red-500">url does not exist please check before requesting</div>} />
     </ReactRoutes>
   );

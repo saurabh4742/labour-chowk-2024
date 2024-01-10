@@ -27,6 +27,7 @@ function ProfileAsLabor() {
     pincode: "",
     password: "",
     availability: "",
+    experience:"",
   });
   const [isLoading, setIsLoading] = useState(false);
 
@@ -88,7 +89,7 @@ function ProfileAsLabor() {
                   <div className="flex flex-col items-center gap-4 ">
                     <Avatar>
                       <AvatarImage />
-                      <AvatarFallback>CN</AvatarFallback>
+                      <AvatarFallback>{profileData.name[0]}</AvatarFallback>
                     </Avatar>
 
                     <div className="flex items-center justify-center gap-3">
@@ -116,11 +117,11 @@ function ProfileAsLabor() {
                       )}
                     </div>
                     <div className="flex items-center justify-center gap-3">
-                      <Label htmlFor="name">Password:</Label>
+                      <Label htmlFor="name">Experience:</Label>
                       {editMode ? (
-                        <Input id="name" placeholder="New Password" />
+                        <Input id="name" placeholder="Experience" />
                       ) : (
-                        "***********"
+                        `${profileData.experience} years`
                       )}
                     </div>
                     <div className="flex items-center justify-center gap-3">

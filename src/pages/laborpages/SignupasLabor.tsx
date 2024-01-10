@@ -16,12 +16,13 @@ function SignupasLabor() {
   const [address, setAddress] = useState("");
   const [password, setPassword] = useState("");
   const [skills, setSkills] = useState("");
+  const [experience,setExperience]=useState("");
   const handleSignup = async () => {
     try {
       setIsLoading(true);
       const response = await axios.post(
         "http://localhost:5500/api/auth/labor/register",
-        { name, phoneNumber,pincode,password,skills,address }, {
+        { name, phoneNumber,pincode,password,skills,address,experience }, {
           withCredentials: true, // Include credentials in the request
         });
       setIsLoading(true);
@@ -79,6 +80,12 @@ function SignupasLabor() {
                 placeholder="Area Pincode"
                 value={pincode}
                 onChange={(e) => setPincode(e.target.value)}
+              />
+              <Input
+                type="text"
+                placeholder="Experience in years"
+                value={experience}
+                onChange={(e) => setExperience(e.target.value)}
               />
               <Input
                 type="text"

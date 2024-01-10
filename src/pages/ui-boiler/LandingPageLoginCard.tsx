@@ -12,7 +12,7 @@ import {
 import { Link } from "react-router-dom";
 function LandingPage() {
   return (
-    <Card className=" w-[350px] h-[50vh] bg-white shadow-md ring-2 ring-gray-900 ring-opacity-40">
+    <Card className=" w-[350px] bg-white shadow-md ring-2 ring-gray-900 ring-opacity-40">
       <CardHeader>
         <CardTitle className="flex justify-center space-y-1.5">
           Welcome to Labor Chowk

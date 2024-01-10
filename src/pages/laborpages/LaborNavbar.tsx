@@ -59,7 +59,7 @@ function LaborNavbar() {
                     <Link to="/labor/profile">Profile</Link>
                   </MenubarItem>
                   <MenubarSeparator />
-                  <MenubarItem>Support</MenubarItem>
+                  <MenubarItem><Link to="/support">Support</Link></MenubarItem>
                   <MenubarSeparator />
                   <MenubarItem
                     onClick={handleLogout}

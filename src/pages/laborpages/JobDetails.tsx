@@ -13,34 +13,39 @@ import { Navigate, useParams } from "react-router-dom";
 import { useMyContext } from "../MyContext";
 import { useEffect, useState } from "react";
 import Loading from "../Loading";
+import axios from "axios";
 function JobDetails() {
   const { userLabor } = useMyContext();
   const params = useParams();
   const id = params.id;
   const [job, setJob] = useState({});
-  const [employerPhone, setEmployerPhone] = useState('');
+  const [employer, setEmployer] = useState({});
   
   useEffect(() => {
     // Perform API request to fetch job details using the id
     const fetchJobDetails = async () => {
       try {
         // Make the API call here using fetch or your preferred method
-        const response = await fetch(`/api/jobs/${id}`); // Replace with your API endpoint
+        const response = await axios.get(`http://localhost:5500/api/vacancy/id/${id}`, {
+          withCredentials: true, // Include credentials in the request
+        }) // Replace with your API endpoint
 
-        if (!response.ok) {
+        if (!(response.status==200)) {
           throw new Error("Failed to fetch job details");
         }
 
-        const data = await response.json();
+        const data = await response.data;
         setJob(data); // Update job state with fetched data
 
         // Fetch employer details using job data
         if (data.employer) {
-          const employerResponse = await fetch(`/api/employers/${data.employer}`); // Replace with endpoint to get employer details
+          const employerResponse = await axios.get(`http://localhost:5500/api/employer/${data.employer}`, {
+            withCredentials: true, // Include credentials in the request
+          }) // Replace with endpoint to get employer details
 
-          if (employerResponse.ok) {
-            const employerData = await employerResponse.json();
-            setEmployerPhone(employerData.phoneNumber); // Set employer phone number in state
+          if (employerResponse.status==200) {
+            const employerData = await employerResponse.data;
+            setEmployer(employerData); // Set employer phone number in state
           }
         }
       } catch (error) {
@@ -56,8 +61,8 @@ function JobDetails() {
 
   const handleCallNow = () => {
     // Use the employer's phone number for the call
-    if (employerPhone) {
-      const phoneNumber = employerPhone;
+    if (employer) {
+      const phoneNumber = employer.phoneNumber;
 
       // Simulate call action by asking for confirmation
       const confirmCall = window.confirm(`Call ${phoneNumber}?`);
@@ -74,7 +79,7 @@ function JobDetails() {
   };
   return (
     <div className="flex justify-center w-full mt-4">
-      {!userLabor.id ? (
+      {!userLabor._id ? (
         <Navigate to="/labor/login" />
       ) : (
         <Card className="w-[350px] bg-white rounded-lg  ring-2 ring-gray-900 ring-opacity-40 shadow-md ">
@@ -88,26 +93,25 @@ function JobDetails() {
               <div className="flex flex-col space-y-1.5">
                 <Avatar>
                   <AvatarImage
-                    src="https://github.com/shadcn.png"
-                    alt="@shadcn"
+                    
                   />
-                  <AvatarFallback>CN</AvatarFallback>
+                  <AvatarFallback>{job.title}</AvatarFallback>
                 </Avatar>
                 <p>
                   <strong>Owner name: </strong>
-                  {job.ownerName}
+                  {employer && employer.name}
                 </p>
                 <p>
                   <strong>Address: </strong>
-                  {job.address}
+                  {job.officeAddress}
                 </p>
                 <p>
                   <strong>Daily: </strong>
-                  {job.salary}
+                  ₹{job.dailySalary}
                 </p>
                 <p>
-                  <strong>Vacancy: </strong>
-                  {job.vacancy}
+                  <strong>Pincode: </strong>
+                  {job.areaPincode}
                 </p>
               </div>
             </div>
@@ -120,7 +124,7 @@ function JobDetails() {
               </CardFooter>
             </>
           ) : (
-            <Navigate to="/loading" />
+            <Loading/>
           )}
         </Card>
       )}

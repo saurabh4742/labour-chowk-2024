@@ -10,9 +10,33 @@ import {
 } from "@/components/ui/menubar";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Link } from "react-router-dom";
+import { useMyContext } from "../MyContext";
+import axios from "axios";
+import Loading from "../Loading";
+import { useState } from "react";
 function EmployerNavbar() {
+ const {userEmployer,setUserEmployer}=useMyContext()
+ const [isLoading, setIsLoading] = useState(false);
+  const handleLogout = async () => {
+    try {
+      setIsLoading(true);
+      const response = await axios.get(
+        "http://localhost:5500/api/auth/employer/logout", {
+          withCredentials: true, // Include credentials in the request
+        })
+        setUserEmployer({});
+      setIsLoading(false);
+      console.log(response.data.message);      
+    } catch (error) {
+      setIsLoading(false);
+      console.error("Error fetching profile data:", error);
+    }
+  };
   return (
     <div>
+            {isLoading ? (
+        <Loading />
+      ) : (
       <Menubar className="justify-between bg-white shadow-md ring-2 ring-gray-900 ring-opacity-40">
         <MenubarMenu>
           <Avatar className=" w-fit">
@@ -26,20 +50,22 @@ function EmployerNavbar() {
           </MenubarTrigger>
           <MenubarContent>
             <MenubarItem><Link to="/employer">Home</Link></MenubarItem>
-            <MenubarSeparator />
+            {userEmployer._id && <>
+              <MenubarSeparator />
             <MenubarItem><Link to="/employer/profile">Profile</Link></MenubarItem>
             <MenubarSeparator />
             <MenubarItem><Link to="/employer/createavacancy">Create a vacancy</Link></MenubarItem>
             <MenubarSeparator />
-            <MenubarItem>Support</MenubarItem>
+            <MenubarItem><Link to="/support">Support</Link></MenubarItem>
             <MenubarSeparator />
-            <MenubarItem className="bg-red-600 text-slate-50">
+            <MenubarItem onClick={handleLogout} className="bg-red-600 text-slate-50">
               Logout
             </MenubarItem>
-            <MenubarSeparator />
+            <MenubarSeparator /></>}
           </MenubarContent>
         </MenubarMenu>
       </Menubar>
+       )}
     </div>
   );
 }

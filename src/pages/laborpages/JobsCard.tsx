@@ -13,47 +13,56 @@ import Loading from "../Loading";
 import { useEffect, useState } from "react";
 import { useMyContext } from "../MyContext";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function JobsCard({ FilterBy, Title, isLarge }) {
   const { userLabor } = useMyContext();
   const [Jobs, setJobs] = useState(null);
 
-  useEffect(() => {
-    const fetchJobs = async () => {
-      try {
-        const response = await axios.get("http://localhost:5500/api/vacancy/all", {
-          withCredentials: true, // Include credentials in the request
-        })// Replace with your API endpoint
-        if (!(response.status==200)) {
-          throw new Error("Failed to fetch jobs");
-        }
-        const data = await response.data;
-
-        if (
-          !isLarge &&
-          FilterBy === "pincode" &&
-          userLabor &&
-          userLabor.pincode
-        ) {
-          const filteredJobs = data.filter(
-            (job) => job.areaPincode === userLabor.pincode
-          );
-          setJobs(filteredJobs);
-        } else if (isLarge && !(FilterBy === "none")) {
-          const filteredJobs = data.filter((job) =>
-            job.title.toLowerCase().includes(FilterBy.toLowerCase())
-          );
-          setJobs(filteredJobs);
-        } else {
-          setJobs(data);
-        }
-      } catch (error) {
-        console.error("Error fetching jobs:", error);
-        // Handle error cases, show an error message, etc.
+  const fetchJobs = async () => {
+    try {
+      const response = await axios.get("http://localhost:5500/api/vacancy/all", {
+        withCredentials: true, // Include credentials in the request
+      }); // Replace with your API endpoint
+      if (!(response.status === 200)) {
+        throw new Error("Failed to fetch jobs");
       }
-    };
+      const data = await response.data;
 
-    fetchJobs();
+      if (
+        !isLarge &&
+        FilterBy === "pincode" &&
+        userLabor &&
+        userLabor.pincode
+      ) {
+        const filteredJobs = data.filter(
+          (job) => job.areaPincode === userLabor.pincode
+        );
+        setJobs(filteredJobs);
+      }
+      else if(isLarge &&
+        !(FilterBy === "None")) {
+          const filteredJobs = data.filter(
+            (job) => job.title.toLowerCase().includes(FilterBy.toLowerCase())
+          );
+          setJobs(filteredJobs);
+        }
+      else {
+        setJobs(data);
+      }
+    } catch (error) {
+      console.error("Error fetching jobs:", error);
+      // Handle error cases, show an error message, etc.
+    }
+  };
+
+  useEffect(() => {
+    fetchJobs(); // Fetch jobs initially
+
+    // Set up a polling mechanism to fetch jobs periodically
+    const interval = setInterval(fetchJobs, 2000); // Fetch jobs every 60 seconds
+
+    return () => clearInterval(interval); // Clean up the interval on component unmount
   }, [FilterBy, isLarge, userLabor]);
 
   return (
@@ -92,11 +101,11 @@ function JobsCard({ FilterBy, Title, isLarge }) {
                               }
                               className="mt-2 w-fit"
                             >
-                              {job.vacancy}
+                              New
                             </Badge>
                             <Avatar className="w-10 h-10 rounded-none">
                               <AvatarImage  />
-                              <AvatarFallback>{job.title}</AvatarFallback>
+                              <AvatarFallback>{job.title[0]}</AvatarFallback>
                             </Avatar>
                             <p>
                               <strong>Need: </strong>
@@ -104,14 +113,15 @@ function JobsCard({ FilterBy, Title, isLarge }) {
                             </p>
                             <p>
                               <strong>Daily: </strong>
-                              {job.dailySalary}
+                              ₹ {job.dailySalary}
                             </p>
                           </div>
-                          <Button
-                          //handle link to detal page with Link
-                          >
-                            View details
-                          </Button>
+                          <Link to={`/labor/${job._id}`} >
+                            <Button
+                            >
+                              View details
+                            </Button>
+                            </Link>
                         </div>
                       )}
                       {!isLarge && (
@@ -119,13 +129,15 @@ function JobsCard({ FilterBy, Title, isLarge }) {
                           <div className="flex flex-col ">
                             <p>{job.title}</p>
                             <p>
-                              <strong>Daily</strong> {job.dailySalary}
+                              <strong>Daily</strong> ₹{job.dailySalary}
                             </p>
+                            <Link to={`/labor/${job._id}`} >
                             <Button
-                            //Link to detail page
                             >
                               View details
                             </Button>
+                            </Link>
+                            
                           </div>
                         </div>
                       )}
