@@ -1,7 +1,0 @@
-
-            Fonts used: SourceSansPro-Black,BebasNeue 
-
-            Colors used: EFEFEF,5A4AE3  
-
-            Icon url: https://thenounproject.com/term/labor/2177063  
-        

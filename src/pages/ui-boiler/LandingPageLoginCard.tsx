@@ -25,7 +25,7 @@ function LandingPage() {
         <div className="grid items-center w-full gap-5">
           <div className="flex justify-center h-20 space-y-1.5">
             <Avatar className="w-20 h-20">
-              <AvatarImage src="https://img.freepik.com/premium-vector/group-people-different-professions-standing-celebrate-labour-day-illustration_138260-1086.jpg" />
+              <AvatarImage src="../../../assets/LabourChowk.png" />
               <AvatarFallback>CN</AvatarFallback>
             </Avatar>
           </div>

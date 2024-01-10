@@ -41,19 +41,21 @@ router.get('/logout', async (req, res)=>{
 router.post('/login', async (req, res) => {
     try {
       const { phoneNumber, password } = req.body;
-  
+      if (!phoneNumber || !password) {
+        return res.status(400).json({ error: 'Empty fields'});
+      }
       // Check if the Employer with the given phone number exists
       const employer = await Employer.findOne({ phoneNumber });
   
       if (!employer) {
-        return res.status(200).json({ message: 'Employer not found.' ,employer});
+        return res.status(400).json({ error: 'User not found.' ,employer});
       }
   
       // Check if the password matches
       const isPasswordValid = await bcrypt.compare(password, employer.password);
   
       if (!isPasswordValid) {
-        return res.status(200).json({ message: 'Invalid credentials.' });
+        return res.status(400).json({ error: 'Invalid credentials.' });
       }
   
       // Create a JWT token with the Employer ID

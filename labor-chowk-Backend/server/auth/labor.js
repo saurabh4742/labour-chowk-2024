@@ -45,7 +45,7 @@ router.post('/login', async (req, res) => {
       const labor = await Labor.findOne({ phoneNumber });
   
       if (!labor) {
-        return res.status(400).json({ error: 'Labor not found.' });
+        return res.status(400).json({ error: 'user not found.' });
       }
   
       // Check if the password matches
@@ -88,7 +88,7 @@ router.post('/login', async (req, res) => {
       // Check if user with the same phone number already exists
       let labor = await Labor.findOne({ phoneNumber });
       if (labor) {
-        return res.status(400).json({ error: "Labor already registered with this phonenumber" });
+        return res.status(400).json({ error: "user already registered with this phonenumber" });
       }
   
       const hashedPassword = await bcrypt.hash(password, 10);
@@ -107,7 +107,7 @@ router.post('/login', async (req, res) => {
       const token=generateToken(labor._id)
       cookieSetterLabor(res,token,true)
   
-      res.status(201).json({ message: "Labor registered successfully.", labor });
+      res.status(201).json({ message: "user registered successfully.", labor });
     } catch (error) {
       console.error("Error registering Labor:", error);
       res.status(500).json({ error: "Internal Server Error" });
