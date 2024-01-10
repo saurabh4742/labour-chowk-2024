@@ -28,14 +28,14 @@ function LoginasLabor() {
       setIsLoading(false); // Set loading to false after receiving the response
       if (response.status === 200) {
          labor = response.data.labor;
-        
+         toast.success(response.data.message)
         setUserLabor(labor);
       } else {
-        toast.error(labor.message)
+        toast.error(response.data.error)
       }
     } catch (error) {
+      toast.error("Something Went Wrong")
       setIsLoading(false); // Set loading to false if an error occurs
-      console.error('Error logging in:', error);
     }
   };
 

@@ -7,6 +7,7 @@ import { useState } from "react";
 import { useMyContext } from "../MyContext";
 import Loading from "../Loading";
 import axios from "axios";
+import toast from "react-hot-toast";
 function SignupasEmployer() {
   const { userEmployer, setUserEmployer } = useMyContext();
   const [isLoading, setIsLoading] = useState(false);
@@ -26,10 +27,12 @@ function SignupasEmployer() {
       setIsLoading(true);
       if (response.status == 201) {
         const data = response.data.employer;
-
+        toast.success(response.data.message)
         return setUserEmployer(data);
       }
+      toast.error(response.data.error)
     } catch (error) {
+      
       console.log(true);
       setIsLoading(false);
     }

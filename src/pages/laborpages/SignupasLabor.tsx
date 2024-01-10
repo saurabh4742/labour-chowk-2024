@@ -7,6 +7,7 @@ import { useMyContext } from "../MyContext";
 import { useState } from "react";
 import axios from "axios";
 import Loading from "../Loading";
+import toast from "react-hot-toast";
 function SignupasLabor() {
   const { userLabor, setUserLabor } = useMyContext();
   const [isLoading, setIsLoading] = useState(false);
@@ -28,11 +29,12 @@ function SignupasLabor() {
       setIsLoading(true);
       if (response.status == 201) {
         const data = response.data.labor;
-
+        toast.success(response.data.message)
         return setUserLabor(data);
       }
+      toast.error(response.data.error)
     } catch (error) {
-      console.log(true);
+      toast.error("Something Went Wrong")
       setIsLoading(false);
     }
   };

@@ -30,14 +30,21 @@ function LoginasEmployer() {
       let employer = response.data.employer;
       setIsLoading(false); // Set loading to false after receiving the response
       if (response.status === 200) {
-        employer = response.data.employer;
-
+         employer = response.data.employer;
+        toast.success(response.data.message);
         setUserEmployer(employer);
       } else {
-        toast.error(employer.message);
+        // Handle specific HTTP error codes
+        if (response.status === 400) {
+          toast.error(response.data.error);
+        } else {
+          // Handle other non-200 HTTP status codes
+          toast.error("An error occurred.");
+        }
       }
     } catch (error) {
-      setIsLoading(false); // Set loading to false if an error occurs
+      setIsLoading(false);
+      toast.error("Something went wrong");
       console.error("Error logging in:", error);
     }
   };

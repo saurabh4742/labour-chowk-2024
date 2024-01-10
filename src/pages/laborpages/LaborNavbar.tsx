@@ -13,6 +13,7 @@ import { useMyContext } from "../MyContext";
 import axios from "axios";
 import Loading from "../Loading";
 import { useState } from "react";
+import toast from "react-hot-toast";
 function LaborNavbar() {
   const [isLoading, setIsLoading] = useState(false);
   const { userLabor, setUserLabor } = useMyContext();
@@ -25,7 +26,8 @@ function LaborNavbar() {
         })
       setUserLabor(null);
       setIsLoading(false);
-      console.log(response.data.message);      
+      toast.success(response.data.message) 
+      
     } catch (error) {
       setIsLoading(false);
       console.error("Error fetching profile data:", error);

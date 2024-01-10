@@ -122,7 +122,7 @@ function LaborsCard({ FilterBy, Title, isLarge }: LaborsCardProps) {
                           <div className="flex flex-col ">
                             <p>{labor.skills}</p>
                             <p>
-                              <strong>Experience</strong> {labor.experience}
+                              <strong>Experience</strong> {labor.experience} years
                             </p>
                             <Link to={`/employer/${labor._id}`}>
                               <Button>View details</Button>
