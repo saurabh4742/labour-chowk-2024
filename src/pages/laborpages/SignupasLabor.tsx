@@ -38,7 +38,7 @@ function SignupasLabor() {
   };
   return (
     <div className="justify-center flex h-[100vh] items-center">
-      {userLabor._id ? (
+      {userLabor? (
         <Navigate to="/labor" />
       ) : isLoading ? (
         <Loading/>

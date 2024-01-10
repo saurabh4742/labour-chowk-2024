@@ -1,5 +1,4 @@
-import React from 'react'
-const contacts: Contact[] = [
+const contacts = [
     { name: 'Toshak Bhat', email: 'bhatsaab04@gmail.com' },
     { name: 'Vineet Sharma', email: 'vineetsharmavs1736112@gmail.com' },
     { name: 'Vanshika Pandey', email: 'Vanshikapandey1711@gmail.com' },

@@ -1,4 +1,3 @@
-import * as React from "react";
 import { Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -8,6 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import Labor from "@/interfaces/Labor";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Navigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -18,7 +18,7 @@ function LaborDetails() {
   const { userEmployer } = useMyContext();
   const params = useParams();
   const id = params.id;
-  const [labor, setLabor] = useState({});
+  const [labor, setLabor] = useState<Labor | null>(null);
 
   useEffect(() => {
     // Perform API request to fetch job details using the id
@@ -67,14 +67,14 @@ function LaborDetails() {
   };
   return (
     <div className="flex justify-center w-full mt-4">
-     { !userEmployer._id ? (
+     { !userEmployer ? (
         <Navigate to="/employer/login" />
       ) : (
         <Card className="w-[350px] bg-white rounded-lg  ring-2 ring-gray-900 ring-opacity-40 shadow-md ">
         {labor ? (
             <>
           <CardHeader>
-            <CardTitle>{labor.profession}</CardTitle>
+            <CardTitle>{labor.skills}</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="grid items-center w-full gap-4">

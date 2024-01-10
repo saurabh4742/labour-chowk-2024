@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useEffect, useState } from "react";
 import {
   Card,
   CardContent,
@@ -25,9 +26,8 @@ function ProfileAsLabor() {
     name: "",
     address: "",
     pincode: "",
-    password: "",
-    availability: "",
-    experience:"",
+    availability: userLabor?.availability,
+    experience: "",
   });
   const [isLoading, setIsLoading] = useState(false);
 
@@ -35,34 +35,95 @@ function ProfileAsLabor() {
     const fetchProfileData = async () => {
       try {
         setIsLoading(true);
-        const response = await axios.get('http://localhost:5500/api/auth/labor/profile', {
-          withCredentials: true, // Include credentials in the request
-        });
+        const response = await axios.get(
+          "http://localhost:5500/api/auth/labor/profile",
+          {
+            withCredentials: true, // Include credentials in the request
+          }
+        );
         setIsLoading(false);
 
         if (response.status === 200) {
           setProfileData(response.data.labor);
         } else {
-          console.log('Failed to fetch profile data');
+          console.log("Failed to fetch profile data");
         }
       } catch (error) {
         setIsLoading(false);
-        console.error('Error fetching profile data:', error);
+        console.error("Error fetching profile data:", error);
       }
     };
 
     fetchProfileData();
   }, []);
 
-  const handleSave = () => {
+  const handleNameChange = (e: { target: { value: any } }) => {
+    const newName = e.target.value;
+    setProfileData((prevProfileData) => ({
+      ...prevProfileData,
+      name: newName,
+    }));
+  };
+
+  const handleAddressChange = (e: { target: { value: any } }) => {
+    const newAddress = e.target.value;
+    setProfileData((prevProfileData) => ({
+      ...prevProfileData,
+      address: newAddress,
+    }));
+  };
+
+  const handleSwitchChange = (checked: any) => {
+    setProfileData((prevProfileData) => ({
+      ...prevProfileData,
+      availability: checked, // Update the availability value based on the checked state
+    }));
+  };
+  const handlePincodeChange = (e: { target: { value: any } }) => {
+    const newPincode = e.target.value;
+    setProfileData((prevProfileData) => ({
+      ...prevProfileData,
+      pincode: newPincode,
+    }));
+  };
+
+  const handleExperienceChange = (e: { target: { value: any } }) => {
+    const newExperience = e.target.value;
+    setProfileData((prevProfileData) => ({
+      ...prevProfileData,
+      experience: newExperience,
+    }));
+  };
+  const handleSave = async () => {
     // Perform save/update profile logic
-    setEditMode(false);
+    try {
+      setIsLoading(true);
+      const response = await axios.put(
+        `http://localhost:5500/api/labor/modify/${userLabor?._id}`,
+        {
+          name: profileData.name,
+          pincode: profileData.pincode,
+          address: profileData.address,
+          availability:profileData.availability,
+          experience:profileData.experience
+        },
+        {
+          withCredentials: true, // Include credentials in the request
+        }
+      );
+      setIsLoading(false);
+      if (response.status == 200) alert("Succesfully Updated");
+      setEditMode(false);
+    } catch (error) {
+      setIsLoading(false);
+      setEditMode(false);
+    }
     // Assuming you might want to update the profile data in the backend here using Axios
   };
 
   return (
     <div className="flex justify-center w-full mt-4">
-      {!userLabor._id ? (
+      {!userLabor ? (
         <Navigate to="/labor/login" />
       ) : (
         <>
@@ -95,31 +156,51 @@ function ProfileAsLabor() {
                     <div className="flex items-center justify-center gap-3">
                       <Label htmlFor="name">Name:</Label>
                       {editMode ? (
-                        <Input id="name" placeholder="New Name" />
+                        <Input
+                          id="name"
+                          placeholder="New Name"
+                          value={profileData.name}
+                          onChange={handleNameChange} // Handle name change
+                        />
                       ) : (
                         `${profileData.name}`
                       )}
                     </div>
                     <div className="flex items-center justify-center gap-3">
-                      <Label htmlFor="name">Address:</Label>
+                      <Label htmlFor="address">Address:</Label>
                       {editMode ? (
-                        <Input id="name" placeholder="New Address" />
+                        <Input
+                          id="address"
+                          placeholder="New Address"
+                          value={profileData.address}
+                          onChange={handleAddressChange} // Handle address change
+                        />
                       ) : (
                         `${profileData.address}`
                       )}
                     </div>
                     <div className="flex items-center justify-center gap-3">
-                      <Label htmlFor="name">Pincode:</Label>
+                      <Label htmlFor="pincode">Pincode:</Label>
                       {editMode ? (
-                        <Input id="name" placeholder="New Pincode" />
+                        <Input
+                          id="pincode"
+                          placeholder="New Pincode"
+                          value={profileData.pincode}
+                          onChange={handlePincodeChange} // Handle pincode change
+                        />
                       ) : (
                         `${profileData.pincode}`
                       )}
                     </div>
                     <div className="flex items-center justify-center gap-3">
-                      <Label htmlFor="name">Experience:</Label>
+                      <Label htmlFor="experience">Experience:</Label>
                       {editMode ? (
-                        <Input id="name" placeholder="Experience" />
+                        <Input
+                          id="experience"
+                          placeholder="Experience"
+                          value={profileData.experience}
+                          onChange={handleExperienceChange} // Handle experience change
+                        />
                       ) : (
                         `${profileData.experience} years`
                       )}
@@ -128,7 +209,11 @@ function ProfileAsLabor() {
                       <Label htmlFor="name">Availability:</Label>
                       {editMode ? (
                         <div className="flex items-center space-x-2">
-                          <Switch id="free/occupied" />
+                          <Switch
+                            checked={profileData.availability}
+                            onCheckedChange={handleSwitchChange} // Handle switch toggle change
+                            id="free/occupied"
+                          />
                           <Label htmlFor="airplane-mode">free/occupied</Label>
                         </div>
                       ) : (

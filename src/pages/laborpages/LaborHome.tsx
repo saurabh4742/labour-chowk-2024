@@ -8,13 +8,13 @@ function LaborHome() {
   const { userLabor } = useMyContext();
   const [searchQuery, setSearchQuery] = useState("");
 
-  const handleSearch = (event) => {
+  const handleSearch = (event: { target: { value: React.SetStateAction<string>; }; }) => {
     setSearchQuery(event.target.value);
   };
 
   return (
     <div>
-      {userLabor._id ? (
+      {userLabor ? (
         <>
           <div className="flex justify-center w-full mt-4">
             <Input

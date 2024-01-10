@@ -1,4 +1,3 @@
-import * as React from "react";
 import { Menu } from "lucide-react";
 import {
   Menubar,
@@ -24,7 +23,7 @@ function LaborNavbar() {
         "http://localhost:5500/api/auth/labor/logout", {
           withCredentials: true, // Include credentials in the request
         })
-      setUserLabor({});
+      setUserLabor(null);
       setIsLoading(false);
       console.log(response.data.message);      
     } catch (error) {
@@ -52,7 +51,7 @@ function LaborNavbar() {
               <MenubarItem>
                 <Link to="/labor">Home</Link>
               </MenubarItem>
-              {userLabor._id && (
+              {userLabor && (
                 <>
                   <MenubarSeparator />
                   <MenubarItem>

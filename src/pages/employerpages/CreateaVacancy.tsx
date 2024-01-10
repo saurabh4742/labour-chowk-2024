@@ -49,7 +49,7 @@ function CreateaVacancy() {
 
   return (
     <div className="flex justify-center w-full mt-4">
-      {!userEmployer._id ? (
+      {!userEmployer ? (
         <Navigate to="/employer/login" />
       ) : isLoading ? (
         <Loading />

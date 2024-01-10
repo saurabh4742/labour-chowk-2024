@@ -1,4 +1,3 @@
-import * as React from "react";
 import { Menu } from "lucide-react";
 import {
   Menubar,
@@ -24,7 +23,7 @@ function EmployerNavbar() {
         "http://localhost:5500/api/auth/employer/logout", {
           withCredentials: true, // Include credentials in the request
         })
-        setUserEmployer({});
+      setUserEmployer(null);
       setIsLoading(false);
       console.log(response.data.message);      
     } catch (error) {
@@ -50,7 +49,7 @@ function EmployerNavbar() {
           </MenubarTrigger>
           <MenubarContent>
             <MenubarItem><Link to="/employer">Home</Link></MenubarItem>
-            {userEmployer._id && <>
+            {userEmployer && <>
               <MenubarSeparator />
             <MenubarItem><Link to="/employer/profile">Profile</Link></MenubarItem>
             <MenubarSeparator />

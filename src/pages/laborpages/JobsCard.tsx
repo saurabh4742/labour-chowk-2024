@@ -1,4 +1,4 @@
-import * as React from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -8,6 +8,7 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
+import Job from "@/interfaces/Job";
 import { Badge } from "@/components/ui/badge";
 import Loading from "../Loading";
 import { useEffect, useState } from "react";
@@ -15,19 +16,27 @@ import { useMyContext } from "../MyContext";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-function JobsCard({ FilterBy, Title, isLarge }) {
+interface JobsCardProps {
+  FilterBy: string;
+  Title: string;
+  isLarge: boolean;
+}
+
+function JobsCard({ FilterBy, Title, isLarge }: JobsCardProps) {
   const { userLabor } = useMyContext();
-  const [Jobs, setJobs] = useState(null);
+  const [Jobs, setJobs] = useState<Job[] | null>(null);
 
   const fetchJobs = async () => {
     try {
       const response = await axios.get("http://localhost:5500/api/vacancy/all", {
-        withCredentials: true, // Include credentials in the request
-      }); // Replace with your API endpoint
+        withCredentials: true,
+      });
+
       if (!(response.status === 200)) {
         throw new Error("Failed to fetch jobs");
       }
-      const data = await response.data;
+
+      const data: Job[] = await response.data;
 
       if (
         !isLarge &&
@@ -39,15 +48,13 @@ function JobsCard({ FilterBy, Title, isLarge }) {
           (job) => job.areaPincode === userLabor.pincode
         );
         setJobs(filteredJobs);
-      }
-      else if(isLarge &&
-        !(FilterBy === "None")) {
-          const filteredJobs = data.filter(
-            (job) => job.title.toLowerCase().includes(FilterBy.toLowerCase())
-          );
-          setJobs(filteredJobs);
-        }
-      else {
+      } else if (isLarge && !(FilterBy === "None")) {
+        const filteredJobs = data.filter(
+          (job) =>
+            job.title.toLowerCase().includes(FilterBy.toLowerCase())
+        );
+        setJobs(filteredJobs);
+      } else {
         setJobs(data);
       }
     } catch (error) {

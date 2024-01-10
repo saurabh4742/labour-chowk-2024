@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import LaborNavbar from './LaborNavbar';
 import { useMyContext } from '../MyContext';
@@ -7,7 +6,7 @@ function LaborPortal() {
   
   return (
     <>
-    {userLabor._id && <LaborNavbar/>}
+    {userLabor && <LaborNavbar/>}
     <Outlet/>
     </>
       

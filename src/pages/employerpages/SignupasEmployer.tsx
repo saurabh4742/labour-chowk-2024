@@ -36,7 +36,7 @@ function SignupasEmployer() {
   };
   return (
     <div className="justify-center flex h-[100vh] items-center">
-      {userEmployer._id ? (
+      {userEmployer ? (
         <Navigate to="/employer" />
       ) : isLoading ? (
         <Loading/>

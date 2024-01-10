@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import  { useEffect, useState } from 'react'
 import {
     Card,
     CardContent,
@@ -24,9 +25,6 @@ function ProfileAsEmployer() {
     name: "",
     address: "",
     pincode: "",
-    password: "",
-    availability: "",
-    experience:"",
   });
   const [isLoading, setIsLoading] = useState(false);
 
@@ -53,15 +51,53 @@ function ProfileAsEmployer() {
     fetchProfileData();
   }, []);
 
-  const handleSave = () => {
+  const handleNameChange = (e: { target: { value: any; }; }) => {
+    const newName = e.target.value;
+    setProfileData((prevProfileData) => ({
+      ...prevProfileData,
+      name: newName,
+    }));
+  };
+
+  const handleAddressChange = (e: { target: { value: any; }; }) => {
+    const newAddress = e.target.value;
+    setProfileData((prevProfileData) => ({
+      ...prevProfileData,
+      address: newAddress,
+    }));
+  };
+  const handlePincodeChange = (e: { target: { value: any; }; }) => {
+    const newPincode = e.target.value;
+    setProfileData((prevProfileData) => ({
+      ...prevProfileData,
+      pincode: newPincode,
+    }));
+  };
+  const handleSave = async () => {
     // Perform save/update profile logic
-    setEditMode(false);
+    try {
+      setIsLoading(true);
+        const response = await axios.put(
+          `http://localhost:5500/api/employer/modify/${userEmployer?._id}`,{name:profileData.name,pincode:profileData.pincode,address:profileData.address},
+          {
+            withCredentials: true, // Include credentials in the request
+          }
+        );
+        setIsLoading(false);
+      if(response.status==200)
+      alert("Succesfully Updated");
+      setEditMode(false);
+      
+    } catch (error) {
+      setIsLoading(false);
+      setEditMode(false);
+    }
     // Assuming you might want to update the profile data in the backend here using Axios
   };
 
   return (
     <div className="flex justify-center w-full mt-4">
-      {!userEmployer._id ? (
+      {!userEmployer ? (
         <Navigate to="/employer/login" />
       ) : (
         <>
@@ -94,7 +130,8 @@ function ProfileAsEmployer() {
                     <div className="flex items-center justify-center gap-3">
                       <Label htmlFor="name">Name:</Label>
                       {editMode ? (
-                        <Input id="name" placeholder="New Name" />
+                        <Input id="name" placeholder="New Name" value={profileData.name}
+                        onChange={handleNameChange}/>
                       ) : (
                         `${profileData.name}`
                       )}
@@ -102,7 +139,8 @@ function ProfileAsEmployer() {
                     <div className="flex items-center justify-center gap-3">
                       <Label htmlFor="name">Address:</Label>
                       {editMode ? (
-                        <Input id="name" placeholder="New Address" />
+                        <Input id="name" placeholder="New Address" value={profileData.address}
+                        onChange={handleAddressChange}/>
                       ) : (
                         `${profileData.address}`
                       )}
@@ -110,7 +148,8 @@ function ProfileAsEmployer() {
                     <div className="flex items-center justify-center gap-3">
                       <Label htmlFor="name">Pincode:</Label>
                       {editMode ? (
-                        <Input id="name" placeholder="New Pincode" />
+                        <Input id="name" placeholder="New Pincode" value={profileData.pincode}
+                        onChange={handlePincodeChange}/>
                       ) : (
                         `${profileData.pincode}`
                       )}
