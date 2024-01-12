@@ -1,5 +1,3 @@
-import React from 'react';
-
 const ContactUs = () => {
   return (
     <section id="contact">
@@ -10,7 +8,7 @@ const ContactUs = () => {
           <input type="text" className="form-input" placeholder="Phone No." />
         </div>
         <div className="text-row">
-          <textarea name="message" id="message" cols="30" rows="10" placeholder="Message"></textarea>
+          <textarea name="message" id="message" placeholder="Message"></textarea>
         </div>
         <div className="btn">
           <button type="submit" className="form-submit">Submit</button>
