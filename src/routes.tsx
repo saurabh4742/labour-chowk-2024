@@ -20,12 +20,13 @@ import CreateaVacancy from "./pages/employerpages/CreateaVacancy";
 import LaborDetails from "./pages/employerpages/LaborDetails";
 import JobDetails from "./pages/laborpages/JobDetails";
 import SupportPage from "./pages/ui-boiler/SupportPage";
+import Home from "./Home";
 
 const AppRoutes = () => {
   return (
     <ReactRoutes>
-
-      <Route path="/" element={<Landing />} />
+      <Route path="/" element={<Home />} />
+      <Route path="/home" element={<Landing />} />
       <Route path="/labor" element={<LaborPortal />}>
       <Route index element={<LaborHome />} />
       <Route path="login" element={<LoginasLabor/>}/>
