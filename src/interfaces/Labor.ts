@@ -1,6 +1,6 @@
 // TypeScript definition for Labor model
 interface Labor {
-    _id: string; // Assuming MongoDB automatically generates the _id field
+    _id: string; 
     name: string;
     password: string;
     phoneNumber: string;
@@ -8,8 +8,7 @@ interface Labor {
     address: string;
     skills: string[];
     experience: string;
-    availability: boolean; // Assuming availability is an array of booleans
-    // Add other fields if any
+    availability: boolean;
   }
   
   export default Labor;
