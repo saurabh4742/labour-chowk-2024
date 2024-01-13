@@ -3,7 +3,7 @@ const Services = () => {
     const servicesData = [
         {
           title: 'Labour',
-          imageUrl: https://i.ibb.co/DMv1hxq/logo.jpg",
+          imageUrl: "https://i.ibb.co/j8Bs392/gardener.jpg",
           description: 'Labour Chowk provides an online search service where you can search labour near to your location.',
           link: '#',
         },
