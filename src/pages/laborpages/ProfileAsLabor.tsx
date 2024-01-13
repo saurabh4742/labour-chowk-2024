@@ -99,7 +99,7 @@ function ProfileAsLabor() {
     try {
       setIsLoading(true);
       const response = await axios.put(
-        `http://localhost:5500/api/labor/modify/${userLabor?._id}`,
+        `https://labor-chowk-api.vercel.app/api/labor/modify/${userLabor?._id}`,
         {
           name: profileData.name,
           pincode: profileData.pincode,

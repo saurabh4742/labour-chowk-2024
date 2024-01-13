@@ -78,7 +78,7 @@ function ProfileAsEmployer() {
     try {
       setIsLoading(true);
         const response = await axios.put(
-          `http://localhost:5500/api/employer/modify/${userEmployer?._id}`,{name:profileData.name,pincode:profileData.pincode,address:profileData.address},
+          `https://labor-chowk-api.vercel.app/api/employer/modify/${userEmployer?._id}`,{name:profileData.name,pincode:profileData.pincode,address:profileData.address},
           {
             withCredentials: true, // Include credentials in the request
           }
