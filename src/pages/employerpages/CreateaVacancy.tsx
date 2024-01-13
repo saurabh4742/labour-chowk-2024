@@ -6,6 +6,7 @@ import { useMyContext } from "../MyContext";
 import { Navigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+import toast from "react-hot-toast";
 import Loading from "../Loading";
 function CreateaVacancy() {
   const { userEmployer } = useMyContext();
@@ -37,13 +38,13 @@ function CreateaVacancy() {
 
       setIsLoading(false);
       if (response.status === 201) {
-        alert(response.data.message);
+        toast.success(response.data.message);
       } else {
-        alert(response.data.error);
+        toast.error(response.data.error);
       }
     } catch (error) {
       setIsLoading(false);
-      alert(error);
+      toast.error("facing server issue");
     }
   };
 
