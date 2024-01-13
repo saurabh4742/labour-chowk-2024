@@ -3,37 +3,37 @@ const Services = () => {
     const servicesData = [
         {
           title: 'Labour',
-          imageUrl: "../../../public/images/builder.jpeg",
+          imageUrl: https://i.ibb.co/DMv1hxq/logo.jpg",
           description: 'Labour Chowk provides an online search service where you can search labour near to your location.',
           link: '#',
         },
         {
           title: 'Mason',
-          imageUrl: "../../../public/images/rajmistri.jpeg",
+          imageUrl: "https://i.ibb.co/84PSsRR/farmer.jpg",
           description: 'We have skilled Mason who build structures. We provide such Mason to your nearest location.',
           link: 'index2.html',
         },
         {
           title: 'Carpenter',
-          imageUrl: "../../../public/images/carpenter.jpeg",
+          imageUrl: "https://i.ibb.co/JnRCBnB/carpenter.jpg",
           description: 'We bring skilled Carpenter to your location who does all the work according to you.',
           link: 'index3.html',
         },
         {
           title: 'Painter',
-          imageUrl: "../../../public/images/farmer.jpeg",
+          imageUrl: "https://i.ibb.co/vQ1S2sm/deliveryboy.jpg",
           description: 'Get the Painting job done by our experts and reshape your dream home.',
           link: 'index4.html',
         },
         {
           title: 'Electrician',
-          imageUrl: "../../../public/images//chef.jpeg",
+          imageUrl: "https://i.ibb.co/1RZzZsF/sweeper.jpg",
           description: 'Our Electrician brings light to your home with their skill and experience.',
           link: 'index5.html',
         },
         {
           title: 'Plumber',
-          imageUrl: "../../../public/images/gardener.jpeg",
+          imageUrl: "https://i.ibb.co/nzhXdCx/silai.jpg",
           description: 'We have highly trained Plumber quickly tackle all your plumbing issues.',
           link: 'index5.html',
         },
