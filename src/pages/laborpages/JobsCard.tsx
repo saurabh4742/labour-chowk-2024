@@ -65,11 +65,6 @@ function JobsCard({ FilterBy, Title, isLarge }: JobsCardProps) {
 
   useEffect(() => {
     fetchJobs(); // Fetch jobs initially
-
-    // Set up a polling mechanism to fetch jobs periodically
-    const interval = setInterval(fetchJobs, 2000); // Fetch jobs every 60 seconds
-
-    return () => clearInterval(interval); // Clean up the interval on component unmount
   }, [FilterBy, isLarge, userLabor]);
 
   return (
