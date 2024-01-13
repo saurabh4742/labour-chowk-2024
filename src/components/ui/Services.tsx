@@ -2,15 +2,15 @@
 const Services = () => {
     const servicesData = [
         {
-          title: 'Labour',
+          title: 'Gardener',
           imageUrl: "https://i.ibb.co/j8Bs392/gardener.jpg",
-          description: 'Labour Chowk provides an online search service where you can search labour near to your location.',
+          description: 'Gardener Chowk provides an online search service where you can search Gardener near to your location.',
           link: '#',
         },
         {
-          title: 'Mason',
+          title: 'Farmer',
           imageUrl: "https://i.ibb.co/84PSsRR/farmer.jpg",
-          description: 'We have skilled Mason who build structures. We provide such Mason to your nearest location.',
+          description: 'We have skilled Farmer who build structures. We provide such Farmer to your nearest location.',
           link: 'index2.html',
         },
         {
@@ -20,21 +20,21 @@ const Services = () => {
           link: 'index3.html',
         },
         {
-          title: 'Painter',
+          title: 'Delivery boy',
           imageUrl: "https://i.ibb.co/vQ1S2sm/deliveryboy.jpg",
           description: 'Get the Painting job done by our experts and reshape your dream home.',
           link: 'index4.html',
         },
         {
-          title: 'Electrician',
+          title: 'Sweeper',
           imageUrl: "https://i.ibb.co/1RZzZsF/sweeper.jpg",
-          description: 'Our Electrician brings light to your home with their skill and experience.',
+          description: 'Our Sweeper brings light to your home with their skill and experience.',
           link: 'index5.html',
         },
         {
-          title: 'Plumber',
+          title: 'Silai',
           imageUrl: "https://i.ibb.co/nzhXdCx/silai.jpg",
-          description: 'We have highly trained Plumber quickly tackle all your plumbing issues.',
+          description: 'We have highly trained Silai quickly tackle all your silaing issues.',
           link: 'index5.html',
         },
     ]
@@ -44,7 +44,7 @@ const Services = () => {
           <h2 className="service-h">Our Services</h2>
           <div className="rows_services">
             {servicesData.map((service, index) => (
-              <a key={index} className="click" href={service.link}>
+              <a key={index} className="click">
                 <div className="card">
                   <div className="imge"> <img src={service.imageUrl} alt="" /></div>
                   <div className="card-content">
