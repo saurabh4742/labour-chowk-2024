@@ -44,9 +44,9 @@ const WhyUs = () => {
             <h3 className="content-title">{reason.title}</h3>
             <p className="content-text">{reason.text}</p>
           </div>
-          <div className="image">
+          {/* <div className="image">
             <img src={reason.image} alt={`Image ${index + 1}`} />
-          </div>
+          </div> */}
         </div>
       ))}
     </section>

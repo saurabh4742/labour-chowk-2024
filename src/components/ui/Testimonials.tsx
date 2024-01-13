@@ -28,7 +28,7 @@ const Testimonials = () => {
         {testimonialsData.map((testimonial, index) => (
           <div key={index} className="testimonial-card">
             <div className="testimonial-info">
-              <img src={testimonial.image} alt={`Testimonial ${index + 1}`} />
+              {/* <img src={testimonial.image} alt={`Testimonial ${index + 1}`} /> */}
               <div className="testimonial-details">
                 <p className="testimonial-name">{testimonial.name}</p>
                 <p className="testimonial-position">{testimonial.position}</p>
