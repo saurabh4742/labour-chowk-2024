@@ -18,7 +18,7 @@ function LoginasEmployer() {
       setIsLoading(true); // Set loading to true when starting the request
 
       const response = await axios.post(
-        "http://localhost:5500/api/auth/employer/login",
+        "https://labor-chowk-api.vercel.app/api/auth/employer/login",
         {
           phoneNumber,
           password,

@@ -21,7 +21,7 @@ function LaborNavbar() {
     try {
       setIsLoading(true);
       const response = await axios.get(
-        "http://localhost:5500/api/auth/labor/logout", {
+        "https://labor-chowk-api.vercel.app/api/auth/labor/logout", {
           withCredentials: true, // Include credentials in the request
         })
       setUserLabor(null);

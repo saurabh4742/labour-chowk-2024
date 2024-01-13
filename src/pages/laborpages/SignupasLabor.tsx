@@ -22,7 +22,7 @@ function SignupasLabor() {
     try {
       setIsLoading(true);
       const response = await axios.post(
-        "http://localhost:5500/api/auth/labor/register",
+        "https://labor-chowk-api.vercel.app/api/auth/labor/register",
         { name, phoneNumber,pincode,password,skills,address,experience }, {
           withCredentials: true, // Include credentials in the request
         });

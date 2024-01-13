@@ -18,7 +18,7 @@ function LoginasLabor() {
     try {
       setIsLoading(true); // Set loading to true when starting the request
 
-      const response = await axios.post('http://localhost:5500/api/auth/labor/login', {
+      const response = await axios.post('https://labor-chowk-api.vercel.app/api/auth/labor/login', {
       phoneNumber,
       password,
     }, {

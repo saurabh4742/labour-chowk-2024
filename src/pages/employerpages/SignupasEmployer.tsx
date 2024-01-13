@@ -20,7 +20,7 @@ function SignupasEmployer() {
     try {
       setIsLoading(true);
       const response = await axios.post(
-        "http://localhost:5500/api/auth/employer/register",
+        "https://labor-chowk-api.vercel.app/api/auth/employer/register",
         { name, phoneNumber,pincode,password,address }, {
           withCredentials: true, // Include credentials in the request
         });

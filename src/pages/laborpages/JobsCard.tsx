@@ -28,7 +28,7 @@ function JobsCard({ FilterBy, Title, isLarge }: JobsCardProps) {
 
   const fetchJobs = async () => {
     try {
-      const response = await axios.get("http://localhost:5500/api/vacancy/all", {
+      const response = await axios.get("https://labor-chowk-api.vercel.app/api/vacancy/all", {
         withCredentials: true,
       });
 

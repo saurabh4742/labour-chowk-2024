@@ -27,7 +27,7 @@ export const MyContextProvider = ({ children }: MyContextProviderProps) => {
   useEffect(() => {
     const fetchDataLabor = async () => {
       try {
-        const response = await axios.get('http://localhost:5500/api/auth/labor/profile', {
+        const response = await axios.get('https://labor-chowk-api.vercel.app/api/auth/labor/profile', {
           withCredentials: true,
         });
         if (response.data.success) {
@@ -41,7 +41,7 @@ export const MyContextProvider = ({ children }: MyContextProviderProps) => {
 
     const fetchDataEmployer = async () => {
       try {
-        const response = await axios.get('http://localhost:5500/api/auth/employer/profile', {
+        const response = await axios.get('https://labor-chowk-api.vercel.app/api/auth/employer/profile', {
           withCredentials: true,
         });
         if (response.data.success) {

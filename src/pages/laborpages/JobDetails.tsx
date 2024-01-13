@@ -27,7 +27,7 @@ function JobDetails() {
     const fetchJobDetails = async () => {
       try {
         // Make the API call here using fetch or your preferred method
-        const response = await axios.get(`http://localhost:5500/api/vacancy/id/${id}`, {
+        const response = await axios.get(`https://labor-chowk-api.vercel.app/api/vacancy/id/${id}`, {
           withCredentials: true, // Include credentials in the request
         }) // Replace with your API endpoint
 
@@ -40,7 +40,7 @@ function JobDetails() {
 
         // Fetch employer details using job data
         if (data.employer) {
-          const employerResponse = await axios.get(`http://localhost:5500/api/employer/${data.employer}`, {
+          const employerResponse = await axios.get(`https://labor-chowk-api.vercel.app/api/employer/${data.employer}`, {
             withCredentials: true, // Include credentials in the request
           }) // Replace with endpoint to get employer details
 

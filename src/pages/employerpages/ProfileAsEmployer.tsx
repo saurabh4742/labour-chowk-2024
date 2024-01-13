@@ -32,7 +32,7 @@ function ProfileAsEmployer() {
     const fetchProfileData = async () => {
       try {
         setIsLoading(true);
-        const response = await axios.get('http://localhost:5500/api/auth/employer/profile', {
+        const response = await axios.get('https://labor-chowk-api.vercel.app/api/auth/employer/profile', {
           withCredentials: true, // Include credentials in the request
         });
         setIsLoading(false);

@@ -21,7 +21,7 @@ function EmployerNavbar() {
     try {
       setIsLoading(true);
       const response = await axios.get(
-        "http://localhost:5500/api/auth/employer/logout", {
+        "https://labor-chowk-api.vercel.app/api/auth/employer/logout", {
           withCredentials: true, // Include credentials in the request
         })
       setUserEmployer(null);

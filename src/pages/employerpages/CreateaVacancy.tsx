@@ -22,7 +22,7 @@ function CreateaVacancy() {
       setIsLoading(true);
 
       const response = await axios.post(
-        "http://localhost:5500/api/vacancy/create",
+        "https://labor-chowk-api.vercel.app/api/vacancy/create",
         {
           title,
           qualification,

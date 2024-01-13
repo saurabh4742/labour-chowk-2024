@@ -36,7 +36,7 @@ function ProfileAsLabor() {
       try {
         setIsLoading(true);
         const response = await axios.get(
-          "http://localhost:5500/api/auth/labor/profile",
+          "https://labor-chowk-api.vercel.app/api/auth/labor/profile",
           {
             withCredentials: true, // Include credentials in the request
           }
