@@ -40,7 +40,7 @@ function EmployerNavbar() {
       <Menubar className="justify-between bg-white shadow-md ring-2 ring-gray-900 ring-opacity-40">
         <MenubarMenu>
           <Avatar className=" w-fit">
-            <AvatarImage src="../../../assets/LabourChowk.png" />
+            <AvatarImage src="https://i.ibb.co/DMv1hxq/logo.jpg" />
             <AvatarFallback>LC</AvatarFallback>
           </Avatar>
         </MenubarMenu>
