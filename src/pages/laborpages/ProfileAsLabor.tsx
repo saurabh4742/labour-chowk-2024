@@ -19,6 +19,7 @@ import { useMyContext } from "../MyContext";
 import { Navigate } from "react-router-dom";
 import axios from "axios";
 import Loading from "../Loading";
+import toast from "react-hot-toast";
 function ProfileAsLabor() {
   const { userLabor } = useMyContext();
   const [editMode, setEditMode] = useState(false);
@@ -112,9 +113,10 @@ function ProfileAsLabor() {
         }
       );
       setIsLoading(false);
-      if (response.status == 200) alert("Succesfully Updated");
+      if (response.status == 200) toast.success("Succesfully Updated");
       setEditMode(false);
     } catch (error) {
+      toast.error("error while saving")
       setIsLoading(false);
       setEditMode(false);
     }
