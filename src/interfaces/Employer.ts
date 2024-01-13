@@ -6,7 +6,6 @@ interface Employer {
     pincode: string;
     phoneNumber: string;
     address: string;
-    // Add other fields if any
   }
   
   export default Employer;
