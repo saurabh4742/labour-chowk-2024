@@ -24,6 +24,7 @@ function EmployerNavbar() {
         "https://labor-chowk-api.vercel.app/api/auth/employer/logout", {
           withCredentials: true, // Include credentials in the request
         })
+      if(response.status==200)  
       setUserEmployer(null);
       setIsLoading(false);
       toast.success(response.data.message)     

@@ -24,6 +24,7 @@ function LaborNavbar() {
         "https://labor-chowk-api.vercel.app/api/auth/labor/logout", {
           withCredentials: true, // Include credentials in the request
         })
+      if(response.status==200)
       setUserLabor(null);
       setIsLoading(false);
       toast.success(response.data.message) 
