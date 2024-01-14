@@ -3,8 +3,6 @@ import { Navigate } from "react-router-dom";
 import { useMyContext } from "../MyContext";
 import JobsCard from "./JobsCard";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-
 function LaborHome() {
   const { userLabor } = useMyContext();
   const [searchQuery, setSearchQuery] = useState("");

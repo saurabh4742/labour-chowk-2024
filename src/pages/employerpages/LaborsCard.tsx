@@ -65,10 +65,10 @@ function LaborsCard({ FilterBy, Title, isLarge }: LaborsCardProps) {
   return (
     <div className="justify-center flex w-[100vw] items-center my-5 ">
       {Labors.length > 0 ? (
-        <Carousel className="flex-col w-full bg-white shadow-md ring-2 ring-gray-900 ring-opacity-40">
+        <Carousel className="flex-col w-full ">
           {/*max-w-sm */}
           {!isLarge && (
-            <p className="flex justify-center my-3 text-xl ">
+            <p className="flex justify-center my-3 text-xl bg-white shadow-md ring-2 ring-gray-900 ring-opacity-40">
               {Title}
             </p>
           )}
