@@ -3,6 +3,7 @@ import { Navigate } from "react-router-dom";
 import { useMyContext } from "../MyContext";
 import JobsCard from "./JobsCard";
 import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 function LaborHome() {
   const { userLabor } = useMyContext();
@@ -16,9 +17,10 @@ function LaborHome() {
     <div>
       {userLabor ? (
         <>
-          <div className="flex justify-center w-full mt-4">
+          <div className="flex-col justify-center w-full mt-4">
+            <Label className="text-2xl text-white ">Kaam Dhundhe</Label>
             <Input
-              className="bg-white shadow-md max-w-80 ring-2 ring-gray-900 ring-opacity-40"
+              className="bg-white shadow-md max-w-80 ring-2 ring-gray-600 ring-opacity-40"
               placeholder="Search..."
               value={searchQuery}
               onChange={handleSearch}

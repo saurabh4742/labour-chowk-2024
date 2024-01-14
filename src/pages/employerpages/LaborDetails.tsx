@@ -70,7 +70,7 @@ function LaborDetails() {
      { !userEmployer ? (
         <Navigate to="/employer/login" />
       ) : (
-        <Card className="w-[350px] bg-white rounded-lg  ring-2 ring-gray-900 ring-opacity-40 shadow-md ">
+        <Card className="w-[350px]  ">
         {labor ? (
             <>
           <CardHeader>

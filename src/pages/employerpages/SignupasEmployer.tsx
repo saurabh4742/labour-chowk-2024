@@ -44,7 +44,7 @@ function SignupasEmployer() {
       ) : isLoading ? (
         <Loading/>
       ) : (
-      <Card className="w-[350px] bg-white shadow-md ring-2 ring-gray-900 ring-opacity-40 ">
+      <Card className="w-[350px] ">
         <CardHeader>
           <Link className="flex justify-center" to="/labor/signup">
             <Button>

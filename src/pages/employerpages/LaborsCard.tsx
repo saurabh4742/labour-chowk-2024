@@ -68,7 +68,7 @@ function LaborsCard({ FilterBy, Title, isLarge }: LaborsCardProps) {
         <Carousel className="flex-col w-full ">
           {/*max-w-sm */}
           {!isLarge && (
-            <p className="flex justify-center my-3 text-xl bg-white shadow-md ring-2 ring-gray-900 ring-opacity-40">
+            <p className="flex justify-center my-3 text-xl ">
               {Title}
             </p>
           )}
@@ -83,8 +83,8 @@ function LaborsCard({ FilterBy, Title, isLarge }: LaborsCardProps) {
                   <Card
                     className={
                       isLarge
-                        ? "w-[200px] md:w-[250px] bg-white rounded-lg  ring-2 ring-gray-900 ring-opacity-40 shadow-md"
-                        : "bg-white rounded-lg  ring-2 ring-gray-900 ring-opacity-40 shadow-md w-fit h-fit"
+                        ? "w-[200px] md:w-[250px] "
+                        : " w-fit h-fit"
                     }
                   >
                     <CardContent>
