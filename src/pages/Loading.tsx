@@ -1,8 +1,8 @@
 const Loading = () => {
   return (
-    <div className="flex justify-center items-center w-full mt-4 text-emerald-500 gap-5">
+    <div className="flex items-center justify-center w-full gap-5 mt-4 text-white">
       <span className="dot-animation">Fetching please wait.</span>
-      <div className="relative rounded-full border-b-2 border-emerald-500 h-[50px] w-[50px] animate-spin">    
+      <div className="relative rounded-full border-b-2 border-white h-[50px] w-[50px] animate-spin">    
       </div>
     </div>
   );
