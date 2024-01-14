@@ -73,7 +73,7 @@ function JobsCard({ FilterBy, Title, isLarge }: JobsCardProps) {
         <Carousel className="flex-col w-full ">
           {/*max-w-sm */}
           {!isLarge && (
-            <p className="flex justify-center my-3 text-xl bg-white shadow-md ring-2 ring-gray-900 ring-opacity-40">
+            <p className="flex justify-center my-3 text-xl bg-white shadow-md ring-2 ring-gray-600 ring-opacity-40">
               {Title}
             </p>
           )}
