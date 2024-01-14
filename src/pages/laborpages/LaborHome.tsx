@@ -17,8 +17,7 @@ function LaborHome() {
     <div>
       {userLabor ? (
         <>
-          <div className="flex-col justify-center w-full mt-4">
-            <Label className="text-2xl text-white ">Kaam Dhundhe</Label>
+          <div className="flex justify-center w-full mt-4">
             <Input
               className="bg-white shadow-md max-w-80 ring-2 ring-gray-600 ring-opacity-40"
               placeholder="Search..."
