@@ -28,8 +28,9 @@ function ProfileAsLabor() {
     name: "",
     address: "",
     pincode: "",
-    availability: userLabor?.availability,
+    availability:false,
     experience: "",
+    image: null,
   });
   const [isLoading, setIsLoading] = useState(false);
 
@@ -88,7 +89,13 @@ function ProfileAsLabor() {
       pincode: newPincode,
     }));
   };
-
+  const handleImageChange = (e: any) => {
+    const selectedImage = e.target.files[0];
+    setProfileData((prevProfileData) => ({
+      ...prevProfileData,
+      image: selectedImage,
+    }));
+  };
   const handleExperienceChange = (e: { target: { value: any } }) => {
     const newExperience = e.target.value;
     setProfileData((prevProfileData) => ({
@@ -97,32 +104,52 @@ function ProfileAsLabor() {
     }));
   };
   const handleSave = async () => {
-    // Perform save/update profile logic
     try {
       setIsLoading(true);
+  
+      const formData = new FormData();
+      formData.append("name", profileData.name);
+      formData.append("pincode", profileData.pincode);
+      formData.append("address", profileData.address);
+      formData.append("availability", profileData.availability.toString());
+      formData.append("experience", profileData.experience);
+  
+      // Check if there is an existing profile image and a new image is selected
+      if (userLabor?.profileImage && profileData.image) {
+        // Delete existing profile image from Firebase Storage
+        await axios.put(
+          `https://labor-chowk-api.vercel.app/api/labor/update/profileImage/${userLabor._id}`
+        );
+  
+      }
+  
+      // Append image file to FormData only if the user has selected a new image
+      if (profileData.image) {
+        formData.append("image", profileData.image);
+      }
+  
       const response = await axios.put(
         `https://labor-chowk-api.vercel.app/api/labor/modify/${userLabor?._id}`,
+        formData,
         {
-          name: profileData.name,
-          pincode: profileData.pincode,
-          address: profileData.address,
-          availability:profileData.availability,
-          experience:profileData.experience
-        },
-        {
-          withCredentials: true, // Include credentials in the request
+          withCredentials: true,
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
         }
       );
+  
       setIsLoading(false);
-      if (response.status == 200) toast.success("Succesfully Updated");
+  
+      if (response.status === 200) toast.success("Successfully Updated");
       setEditMode(false);
     } catch (error) {
-      toast.error("error while saving")
+      toast.error("Error while saving");
       setIsLoading(false);
       setEditMode(false);
     }
-    // Assuming you might want to update the profile data in the backend here using Axios
   };
+  
 
   return (
     <div className="flex justify-center w-full mt-4">
@@ -151,10 +178,22 @@ function ProfileAsLabor() {
               <CardContent>
                 <div className="grid items-center w-full gap-4">
                   <div className="flex flex-col items-center gap-4 ">
-                    <Avatar>
-                      <AvatarImage src={userLabor?.profileImage? userLabor.profileImage : fallbackImages.default} />
-                      <AvatarFallback>{userLabor.name[0]}</AvatarFallback>
-                    </Avatar>
+                  <div className="flex items-center justify-center gap-3">
+                      {editMode && <Label htmlFor="image">Profile Image:</Label> }
+                      {editMode ? (
+                        <Input
+                          id="image"
+                          type="file"
+                          accept="image/*"
+                          onChange={handleImageChange}
+                        />
+                      ) : (
+                        <Avatar>
+                          <AvatarImage src={userLabor?.profileImage || fallbackImages.default} />
+                          <AvatarFallback>{userLabor?.name[0]}</AvatarFallback>
+                        </Avatar>
+                      )}
+                    </div>
 
                     <div className="flex items-center justify-center gap-3">
                       <Label htmlFor="name">Name:</Label>
@@ -166,7 +205,7 @@ function ProfileAsLabor() {
                           onChange={handleNameChange} // Handle name change
                         />
                       ) : (
-                        `${profileData.name}`
+                        `${userLabor.name}`
                       )}
                     </div>
                     <div className="flex items-center justify-center gap-3">
@@ -179,7 +218,7 @@ function ProfileAsLabor() {
                           onChange={handleAddressChange} // Handle address change
                         />
                       ) : (
-                        `${profileData.address}`
+                        `${userLabor.address}`
                       )}
                     </div>
                     <div className="flex items-center justify-center gap-3">
@@ -192,7 +231,7 @@ function ProfileAsLabor() {
                           onChange={handlePincodeChange} // Handle pincode change
                         />
                       ) : (
-                        `${profileData.pincode}`
+                        `${userLabor.pincode}`
                       )}
                     </div>
                     <div className="flex items-center justify-center gap-3">
@@ -205,7 +244,7 @@ function ProfileAsLabor() {
                           onChange={handleExperienceChange} // Handle experience change
                         />
                       ) : (
-                        `${profileData.experience} years`
+                        `${userLabor.experience} years`
                       )}
                     </div>
                     <div className="flex items-center justify-center gap-3">
@@ -220,7 +259,7 @@ function ProfileAsLabor() {
                           <Label htmlFor="airplane-mode">free/occupied</Label>
                         </div>
                       ) : (
-                        <>{profileData.availability ? "free" : "occupied"}</>
+                        <>{userLabor.availability ? "free" : "occupied"}</>
                       )}
                     </div>
                   </div>
