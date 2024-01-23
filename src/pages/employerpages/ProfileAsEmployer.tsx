@@ -9,7 +9,7 @@ import {
     CardTitle,
   } from "@/components/ui/card";
   import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-  import fallbackImages from "image/fallback";
+  import fallbackImages from "../../../image/fallback";
   import { Input } from "@/components/ui/input";
   import { Label } from "@/components/ui/label";
   import { Button } from "@/components/ui/button";

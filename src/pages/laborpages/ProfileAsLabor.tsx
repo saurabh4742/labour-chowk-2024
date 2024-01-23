@@ -20,7 +20,7 @@ import { Navigate } from "react-router-dom";
 import axios from "axios";
 import Loading from "../Loading";
 import toast from "react-hot-toast";
-import fallbackImages from "image/fallback";
+import fallbackImages from "../../../image/fallback";
 function ProfileAsLabor() {
   const { userLabor } = useMyContext();
   const [editMode, setEditMode] = useState(false);
