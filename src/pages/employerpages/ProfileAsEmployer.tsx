@@ -9,7 +9,7 @@ import {
     CardTitle,
   } from "@/components/ui/card";
   import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-  
+  import fallbackImages from "image/fallback";
   import { Input } from "@/components/ui/input";
   import { Label } from "@/components/ui/label";
   import { Button } from "@/components/ui/button";
@@ -126,7 +126,7 @@ function ProfileAsEmployer() {
                   <div className="flex flex-col items-center gap-4 ">
                     <Avatar>
                       <AvatarImage />
-                      <AvatarFallback>{profileData.name[0]}</AvatarFallback>
+                      <AvatarFallback>{userEmployer?.profileImage? userEmployer.profileImage : fallbackImages.default}</AvatarFallback>
                     </Avatar>
 
                     <div className="flex items-center justify-center gap-3">

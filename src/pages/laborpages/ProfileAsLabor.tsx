@@ -20,6 +20,7 @@ import { Navigate } from "react-router-dom";
 import axios from "axios";
 import Loading from "../Loading";
 import toast from "react-hot-toast";
+import fallbackImages from "image/fallback";
 function ProfileAsLabor() {
   const { userLabor } = useMyContext();
   const [editMode, setEditMode] = useState(false);
@@ -152,7 +153,7 @@ function ProfileAsLabor() {
                   <div className="flex flex-col items-center gap-4 ">
                     <Avatar>
                       <AvatarImage />
-                      <AvatarFallback>{profileData.name[0]}</AvatarFallback>
+                      <AvatarFallback>{userLabor?.profileImage? userLabor.profileImage : fallbackImages.default}</AvatarFallback>
                     </Avatar>
 
                     <div className="flex items-center justify-center gap-3">

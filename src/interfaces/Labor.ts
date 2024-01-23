@@ -9,6 +9,7 @@ interface Labor {
     skills: string[];
     experience: string;
     availability: boolean;
+    profileImage: string;
   }
   
   export default Labor;

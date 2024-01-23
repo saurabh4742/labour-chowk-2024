@@ -6,6 +6,7 @@ interface Employer {
     pincode: string;
     phoneNumber: string;
     address: string;
+    profileImage: string;
   }
   
   export default Employer;
