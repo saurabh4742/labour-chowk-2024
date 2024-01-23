@@ -152,8 +152,8 @@ function ProfileAsLabor() {
                 <div className="grid items-center w-full gap-4">
                   <div className="flex flex-col items-center gap-4 ">
                     <Avatar>
-                      <AvatarImage />
-                      <AvatarFallback>{userLabor?.profileImage? userLabor.profileImage : fallbackImages.default}</AvatarFallback>
+                      <AvatarImage src={userLabor?.profileImage? userLabor.profileImage : fallbackImages.default} />
+                      <AvatarFallback>{userLabor.name[0]}</AvatarFallback>
                     </Avatar>
 
                     <div className="flex items-center justify-center gap-3">

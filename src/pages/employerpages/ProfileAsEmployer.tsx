@@ -125,8 +125,8 @@ function ProfileAsEmployer() {
                 <div className="grid items-center w-full gap-4">
                   <div className="flex flex-col items-center gap-4 ">
                     <Avatar>
-                      <AvatarImage />
-                      <AvatarFallback>{userEmployer?.profileImage? userEmployer.profileImage : fallbackImages.default}</AvatarFallback>
+                      <AvatarImage src={userEmployer?.profileImage? userEmployer.profileImage : fallbackImages.default} />
+                      <AvatarFallback>{userEmployer.name[0]}</AvatarFallback>
                     </Avatar>
 
                     <div className="flex items-center justify-center gap-3">

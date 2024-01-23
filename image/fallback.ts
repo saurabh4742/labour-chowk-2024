@@ -1,4 +1,4 @@
 const fallbackImages = {
-    default: 'https://cdn.vectorstock.com/i/preview-1x/96/74/avatar-8-vector-32409674.webp',
+    default: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png',
   };
 export default fallbackImages;
