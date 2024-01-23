@@ -80,7 +80,7 @@ function LaborDetails() {
           <CardContent>
             <div className="grid items-center w-full gap-4">
               <div className="flex flex-col space-y-1.5">
-                <Avatar>
+                <Avatar className="w-32 h-32 ">
                   <AvatarImage
                   src={labor.profileImage? labor.profileImage:fallbackImages.default}
                   />
