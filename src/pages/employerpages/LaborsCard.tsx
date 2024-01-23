@@ -14,7 +14,7 @@ import { Badge } from "@/components/ui/badge";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Labor from "@/interfaces/Labor";
-
+import fallbackImages from "../../../image/fallback";
 interface LaborsCardProps {
   FilterBy: string;
   Title: string;
@@ -95,7 +95,7 @@ function LaborsCard({ FilterBy, Title, isLarge }: LaborsCardProps) {
                               {labor.availability ? "available" : "busy"}
                             </Badge>
                             <Avatar className="w-10 h-10 rounded-none">
-                              <AvatarImage />
+                              <AvatarImage src={labor.profileImage? labor.profileImage:fallbackImages.default} />
                               <AvatarFallback>{labor.name[0]}</AvatarFallback>
                             </Avatar>
                             <p>

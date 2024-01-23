@@ -13,6 +13,7 @@ import { Navigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Loading from "../Loading";
+import fallbackImages from "../../../image/fallback";
 import { useMyContext } from "../MyContext";
 function LaborDetails() {
   const { userEmployer } = useMyContext();
@@ -81,6 +82,7 @@ function LaborDetails() {
               <div className="flex flex-col space-y-1.5">
                 <Avatar>
                   <AvatarImage
+                  src={labor.profileImage? labor.profileImage:fallbackImages.default}
                   />
                   <AvatarFallback>{labor.name}</AvatarFallback>
                 </Avatar>

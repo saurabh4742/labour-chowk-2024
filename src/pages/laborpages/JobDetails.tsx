@@ -7,6 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import fallbackImages from "../../../image/fallback";
 import Employer from "@/interfaces/Employer";
 import Job from "@/interfaces/Job";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -94,7 +95,7 @@ function JobDetails() {
               <div className="flex flex-col space-y-1.5">
                 <Avatar>
                   <AvatarImage
-                    
+                    src={employer?.profileImage? employer.profileImage: fallbackImages.default}
                   />
                   <AvatarFallback>{job.title}</AvatarFallback>
                 </Avatar>
