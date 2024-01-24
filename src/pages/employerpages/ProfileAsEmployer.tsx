@@ -165,7 +165,7 @@ function ProfileAsEmployer() {
                           onChange={handleImageChange}
                         />
                       ) : (
-                        <Avatar className=' h-24 w-24'>
+                        <Avatar className='shadow-[0_3px_10px_rgb(0,0,0,0.2)] h-24 w-24'>
                           <AvatarImage src={userEmployer?.profileImage || fallbackImages.default} />
                           <AvatarFallback>{userEmployer?.name[0]}</AvatarFallback>
                         </Avatar>
