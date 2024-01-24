@@ -94,7 +94,7 @@ function LaborsCard({ FilterBy, Title, isLarge }: LaborsCardProps) {
                             <Badge variant={"default"} className="mt-2 w-fit">
                               {labor.availability ? "available" : "busy"}
                             </Badge>
-                            <Avatar className="w-10 h-10 rounded-none">
+                            <Avatar className=" w-14 h-14">
                               <AvatarImage src={labor.profileImage? labor.profileImage:fallbackImages.default} />
                               <AvatarFallback>{labor.name[0]}</AvatarFallback>
                             </Avatar>
