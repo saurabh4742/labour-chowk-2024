@@ -26,17 +26,19 @@ function LaborDetails() {
     const fetchJobDetails = async () => {
       try {
         // Make the API call here using fetch or your preferred method
-        const response = await axios.get(`https://labor-chowk-api.vercel.app/api/labor/${id}`, {
-          withCredentials: true, // Include credentials in the request
-        }) // Replace with your API endpoint
+        const response = await axios.get(
+          `https://labor-chowk-api.vercel.app/api/labor/${id}`,
+          {
+            withCredentials: true, // Include credentials in the request
+          }
+        ); // Replace with your API endpoint
 
-        if (!(response.status==200)) {
+        if (!(response.status == 200)) {
           throw new Error("Failed to fetch labor details");
         }
 
         const data = await response.data;
         setLabor(data); // Update job state with fetched data
-
       } catch (error) {
         console.error("Error fetching job details:", error);
         // Handle error cases, maybe show an error message or redirect
@@ -49,8 +51,7 @@ function LaborDetails() {
   }, [id]);
 
   const handleCallNow = () => {
-
-  if (labor) {
+    if (labor) {
       const phoneNumber = labor.phoneNumber;
 
       // Simulate call action by asking for confirmation
@@ -62,58 +63,64 @@ function LaborDetails() {
       }
     } else {
       // Handle scenario when employer's phone number is not available
-      console.error('Employer phone number not found');
+      console.error("Employer phone number not found");
       // Show an error message or handle accordingly
     }
   };
   return (
     <div className="flex justify-center w-full mt-4">
-     { !userEmployer ? (
+      {!userEmployer ? (
         <Navigate to="/employer/login" />
       ) : (
         <Card className="w-[350px]  ">
-        {labor ? (
+          {labor ? (
             <>
-          <CardHeader>
-            <CardTitle>{labor.skills}</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="grid items-center w-full gap-4">
-              <div className="flex flex-col space-y-1.5">
-                <Avatar className="w-32 h-32 ">
-                  <AvatarImage
-                  src={labor.profileImage? labor.profileImage:fallbackImages.default}
-                  />
-                  <AvatarFallback>{labor.name}</AvatarFallback>
-                </Avatar>
-                <p>
-                  <strong>Labor name: </strong>
-                  {labor.name}
-                </p>
-                <p>
-                  <strong>Address: </strong>
-                  {labor.address}
-                </p>
-                <p>
-                  <strong>Experience: </strong>
-                  {labor.experience} years
-                </p>
-                <p>
-                  <strong>Availability: </strong>
-                  {labor.availability? "free":"occupied"}
-                </p>
-              </div>
-            </div>
-          </CardContent>
-          <CardFooter className="flex">
-            <Button className="w-full" onClick={handleCallNow}>
-              <Phone className="w-4 h-4 mr-2" />
-              Call Now and Enquiry
-            </Button>
-          </CardFooter>
-          </>
+              <CardHeader>
+                <CardTitle>{labor.skills}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="grid items-center w-full gap-4">
+                  <div className="flex flex-col space-y-1.5">
+                    <div className="flex items-center justify-center gap-3">
+                      <Avatar className="w-32 h-32 ">
+                        <AvatarImage
+                          src={
+                            labor.profileImage
+                              ? labor.profileImage
+                              : fallbackImages.default
+                          }
+                        />
+                        <AvatarFallback>{labor.name}</AvatarFallback>
+                      </Avatar>
+                    </div>
+                    <p>
+                      <strong>Labor name: </strong>
+                      {labor.name}
+                    </p>
+                    <p>
+                      <strong>Address: </strong>
+                      {labor.address}
+                    </p>
+                    <p>
+                      <strong>Experience: </strong>
+                      {labor.experience} years
+                    </p>
+                    <p>
+                      <strong>Availability: </strong>
+                      {labor.availability ? "free" : "occupied"}
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+              <CardFooter className="flex">
+                <Button className="w-full" onClick={handleCallNow}>
+                  <Phone className="w-4 h-4 mr-2" />
+                  Call Now and Enquiry
+                </Button>
+              </CardFooter>
+            </>
           ) : (
-            <Loading/>
+            <Loading />
           )}
         </Card>
       )}

@@ -22,17 +22,20 @@ function JobDetails() {
   const id = params.id;
   const [job, setJob] = useState<Job | null>(null);
   const [employer, setEmployer] = useState<Employer | null>(null);
-  
+
   useEffect(() => {
     // Perform API request to fetch job details using the id
     const fetchJobDetails = async () => {
       try {
         // Make the API call here using fetch or your preferred method
-        const response = await axios.get(`https://labor-chowk-api.vercel.app/api/vacancy/id/${id}`, {
-          withCredentials: true, // Include credentials in the request
-        }) // Replace with your API endpoint
+        const response = await axios.get(
+          `https://labor-chowk-api.vercel.app/api/vacancy/id/${id}`,
+          {
+            withCredentials: true, // Include credentials in the request
+          }
+        ); // Replace with your API endpoint
 
-        if (!(response.status==200)) {
+        if (!(response.status == 200)) {
           throw new Error("Failed to fetch job details");
         }
 
@@ -41,11 +44,14 @@ function JobDetails() {
 
         // Fetch employer details using job data
         if (data.employer) {
-          const employerResponse = await axios.get(`https://labor-chowk-api.vercel.app/api/employer/${data.employer}`, {
-            withCredentials: true, // Include credentials in the request
-          }) // Replace with endpoint to get employer details
+          const employerResponse = await axios.get(
+            `https://labor-chowk-api.vercel.app/api/employer/${data.employer}`,
+            {
+              withCredentials: true, // Include credentials in the request
+            }
+          ); // Replace with endpoint to get employer details
 
-          if (employerResponse.status==200) {
+          if (employerResponse.status == 200) {
             const employerData = await employerResponse.data;
             setEmployer(employerData); // Set employer phone number in state
           }
@@ -75,7 +81,7 @@ function JobDetails() {
       }
     } else {
       // Handle scenario when employer's phone number is not available
-      console.error('Employer phone number not found');
+      console.error("Employer phone number not found");
       // Show an error message or handle accordingly
     }
   };
@@ -91,33 +97,38 @@ function JobDetails() {
                 <CardTitle>{job.title}</CardTitle>
               </CardHeader>
               <CardContent>
-            <div className="grid items-center w-full gap-4">
-              <div className="flex flex-col space-y-1.5">
-                <Avatar>
-                  <AvatarImage
-                    src={employer?.profileImage? employer.profileImage: fallbackImages.default}
-                  />
-                  <AvatarFallback>{job.title}</AvatarFallback>
-                </Avatar>
-                <p>
-                  <strong>Owner name: </strong>
-                  {employer && employer.name}
-                </p>
-                <p>
-                  <strong>Address: </strong>
-                  {job.officeAddress}
-                </p>
-                <p>
-                  <strong>Daily: </strong>
-                  ₹{job.dailySalary}
-                </p>
-                <p>
-                  <strong>Pincode: </strong>
-                  {job.areaPincode}
-                </p>
-              </div>
-            </div>
-          </CardContent>
+                <div className="grid items-center w-full gap-4">
+                  <div className="flex flex-col space-y-1.5">
+                    <div className="flex items-center justify-center gap-3">
+                      <Avatar className="w-32 h-32">
+                        <AvatarImage
+                          src={
+                            employer?.profileImage
+                              ? employer.profileImage
+                              : fallbackImages.default
+                          }
+                        />
+                        <AvatarFallback>{job.title}</AvatarFallback>
+                      </Avatar>
+                    </div>
+                    <p>
+                      <strong>Owner name: </strong>
+                      {employer && employer.name}
+                    </p>
+                    <p>
+                      <strong>Address: </strong>
+                      {job.officeAddress}
+                    </p>
+                    <p>
+                      <strong>Daily: </strong>₹{job.dailySalary}
+                    </p>
+                    <p>
+                      <strong>Pincode: </strong>
+                      {job.areaPincode}
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
               <CardFooter className="flex">
                 <Button className="w-full" onClick={handleCallNow}>
                   <Phone className="w-4 h-4 mr-2" />
@@ -126,7 +137,7 @@ function JobDetails() {
               </CardFooter>
             </>
           ) : (
-            <Loading/>
+            <Loading />
           )}
         </Card>
       )}
