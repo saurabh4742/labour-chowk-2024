@@ -26,6 +26,7 @@ function ProfileAsEmployer() {
     name: "",
     address: "",
     pincode: "",
+    image: null,
   });
   const [isLoading, setIsLoading] = useState(false);
 
@@ -67,6 +68,15 @@ function ProfileAsEmployer() {
       address: newAddress,
     }));
   };
+
+  const handleImageChange = (e: any) => {
+    const selectedImage = e.target.files[0];
+    setProfileData((prevProfileData) => ({
+      ...prevProfileData,
+      image: selectedImage,
+    }));
+  };
+
   const handlePincodeChange = (e: { target: { value: any; }; }) => {
     const newPincode = e.target.value;
     setProfileData((prevProfileData) => ({
@@ -78,12 +88,33 @@ function ProfileAsEmployer() {
     // Perform save/update profile logic
     try {
       setIsLoading(true);
-        const response = await axios.put(
-          `https://labor-chowk-api.vercel.app/api/employer/modify/${userEmployer?._id}`,{name:profileData.name,pincode:profileData.pincode,address:profileData.address},
-          {
-            withCredentials: true, // Include credentials in the request
-          }
+      const formData = new FormData();
+      formData.append("name", profileData.name);
+      formData.append("pincode", profileData.pincode);
+      formData.append("address", profileData.address);
+      if (userEmployer?.profileImage && profileData.image) {
+        // Delete existing profile image from Firebase Storage
+        await axios.put(
+          `https://labor-chowk-api.vercel.app/api/employer/update/profileImage/${userEmployer._id}`
         );
+  
+      }
+  
+      // Append image file to FormData only if the user has selected a new image
+      if (profileData.image) {
+        formData.append("image", profileData.image);
+      }
+  
+      const response = await axios.put(
+        `https://labor-chowk-api.vercel.app/api/employer/modify/${userEmployer?._id}`,
+        formData,
+        {
+          withCredentials: true,
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
         setIsLoading(false);
       if(response.status==200)
       toast.success("Succesfully Updated");
@@ -124,10 +155,23 @@ function ProfileAsEmployer() {
               <CardContent>
                 <div className="grid items-center w-full gap-4">
                   <div className="flex flex-col items-center gap-4 ">
-                    <Avatar>
-                      <AvatarImage src={userEmployer?.profileImage? userEmployer.profileImage : fallbackImages.default} />
-                      <AvatarFallback>{userEmployer.name[0]}</AvatarFallback>
-                    </Avatar>
+                  <div className="flex items-center justify-center gap-3">
+                      {editMode && <Label htmlFor="image">Profile Image:</Label> }
+                      {editMode ? (
+                        <Input
+                          id="image"
+                          type="file"
+                          accept="image/*"
+                          onChange={handleImageChange}
+                        />
+                      ) : (
+                        <Avatar className=' h-24 w-24'>
+                          <AvatarImage src={userEmployer?.profileImage || fallbackImages.default} />
+                          <AvatarFallback>{userEmployer?.name[0]}</AvatarFallback>
+                        </Avatar>
+                      )}
+                    </div>
+
 
                     <div className="flex items-center justify-center gap-3">
                       <Label htmlFor="name">Name:</Label>
