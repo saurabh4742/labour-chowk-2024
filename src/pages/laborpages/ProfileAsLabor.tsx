@@ -160,7 +160,7 @@ function ProfileAsLabor() {
           {isLoading ? (
             <Loading />
           ) : (
-            <Card className="w-[350px]">
+            <Card className="w-[350px] shadow-md ring-2 ring-green-900 ring-opacity-80">
               <CardHeader>
                 <CardTitle>Profile</CardTitle>
                 <CardDescription>
@@ -188,7 +188,7 @@ function ProfileAsLabor() {
                           onChange={handleImageChange}
                         />
                       ) : (
-                        <Avatar className='w-24 h-24 '>
+                        <Avatar className='w-24 h-24 shadow-md ring-2 ring-green-900 ring-opacity-80'>
                           <AvatarImage src={userLabor?.profileImage || fallbackImages.default} />
                           <AvatarFallback>{userLabor?.name[0]}</AvatarFallback>
                         </Avatar>
