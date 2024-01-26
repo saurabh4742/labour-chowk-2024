@@ -21,6 +21,7 @@ import LaborDetails from "./pages/employerpages/LaborDetails";
 import JobDetails from "./pages/laborpages/JobDetails";
 import SupportPage from "./pages/ui-boiler/SupportPage";
 import Home from "./Home";
+import ManageVacancy from "./pages/employerpages/ManageVacancies";
 
 const AppRoutes = () => {
   return (
@@ -40,6 +41,7 @@ const AppRoutes = () => {
       <Route path="signup" element={<SignupasEmployer/>}/>
       <Route path="profile" element={<ProfileAsEmployer/>}/>
       <Route path="createavacancy" element={<CreateaVacancy/>}/>
+      <Route path="managevacancies" element={<ManageVacancy/>}/>
       <Route path=":id" element={<LaborDetails/>}/>
       </Route>
       <Route path="/loading" element={<Loading />} />

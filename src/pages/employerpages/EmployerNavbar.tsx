@@ -57,6 +57,8 @@ function EmployerNavbar() {
             <MenubarSeparator />
             <MenubarItem><Link to="/employer/createavacancy">Create a vacancy</Link></MenubarItem>
             <MenubarSeparator />
+            <MenubarItem><Link to="/employer/managevacancies">Manage vacancies</Link></MenubarItem>
+            <MenubarSeparator />
             <MenubarItem><Link to="/support">Support</Link></MenubarItem>
             <MenubarSeparator />
             <MenubarItem onClick={handleLogout} className="bg-red-600 text-slate-50">
