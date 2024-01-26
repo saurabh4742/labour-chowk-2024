@@ -1,14 +1,18 @@
-import { Input } from '@/components/ui/input';
-import React, { useState } from 'react'
-import { Navigate } from 'react-router-dom';
-import LaborsCard from './LaborsCard';
-import { useMyContext } from '../MyContext';
-import { Label } from '@/components/ui/label';
+import { Input } from "@/components/ui/input";
+import React, { useState } from "react";
+import { Navigate } from "react-router-dom";
+import LaborsCard from "./LaborsCard";
+import { useMyContext } from "../MyContext";
+import { Label } from "@/components/ui/label";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+
 function EmployerHome() {
-  const { userEmployer} = useMyContext();
+  const { userEmployer } = useMyContext();
   const [searchQuery, setSearchQuery] = useState("");
 
-  const handleSearch = (event: { target: { value: React.SetStateAction<string>; }; }) => {
+  const handleSearch = (event: {
+    target: { value: React.SetStateAction<string> };
+  }) => {
     setSearchQuery(event.target.value);
   };
 
@@ -25,7 +29,14 @@ function EmployerHome() {
             />
           </div>
           <div className="flex justify-center w-full mt-4">
-            <Label>Labor Chowk welcomes you, Mr./Mrs. {userEmployer?.name}! </Label>
+            <Label className="text-2xl">
+              Labor Chowk
+              <Avatar className="w-20 h-20">
+                <AvatarImage src="https://i.ibb.co/DMv1hxq/logo.jpg" />
+                <AvatarFallback>LC</AvatarFallback>
+              </Avatar>
+              welcomes you, Mr./Mrs. {userEmployer?.name}!
+            </Label>
           </div>
           {searchQuery ? (
             <LaborsCard
@@ -51,4 +62,4 @@ function EmployerHome() {
   );
 }
 
-export default EmployerHome
+export default EmployerHome;
