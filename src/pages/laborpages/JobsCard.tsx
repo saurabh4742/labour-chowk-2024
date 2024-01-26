@@ -88,8 +88,8 @@ function JobsCard({ FilterBy, Title, isLarge }: JobsCardProps) {
                   <Card
                     className={
                       isLarge
-                        ? "w-[200px] md:w-[250px] shadow-md ring-2 ring-green-900 ring-opacity-80"
-                        : " w-fit h-fit shadow-md ring-2 ring-green-900 ring-opacity-80"
+                        ? "w-[200px] md:w-[250px] "
+                        : " w-fit h-fit "
                     }
                   >
                     <CardContent>
@@ -105,7 +105,7 @@ function JobsCard({ FilterBy, Title, isLarge }: JobsCardProps) {
                             >
                               New
                             </Badge>
-                            <Avatar className="w-10 h-10 shadow-md ring-2 ring-green-900 ring-opacity-80">
+                            <Avatar className="w-10 h-10 ">
                               <AvatarImage  />
                               <AvatarFallback>{job.title[0]}</AvatarFallback>
                             </Avatar>
@@ -119,7 +119,7 @@ function JobsCard({ FilterBy, Title, isLarge }: JobsCardProps) {
                             </p>
                           </div>
                           <Link to={`/labor/${job._id}`} >
-                            <Button className="shadow-md ring-2 ring-green-900 ring-opacity-80"
+                            <Button 
                             >
                               View details
                             </Button>

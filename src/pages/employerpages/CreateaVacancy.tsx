@@ -55,7 +55,7 @@ function CreateaVacancy() {
       ) : isLoading ? (
         <Loading />
       ) : (
-        <Card className="w-[350px] shadow-md ring-2 ring-green-900 ring-opacity-80">
+        <Card className="w-[350px] ">
           <CardHeader>
             <CardTitle className="flex justify-center space-y-1.5">
               Need an employee

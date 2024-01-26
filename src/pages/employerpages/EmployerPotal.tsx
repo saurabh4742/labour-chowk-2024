@@ -4,7 +4,7 @@ import { useMyContext } from "../MyContext";
 function EmployerPotal() {
   const { userEmployer} = useMyContext();
   return (
-    <div className='min-h-screen overflow-auto bg-green-300 bg-opacity-60'>
+    <div className='min-h-screen overflow-auto '>
       {userEmployer && <EmployerNavbar />}
       <Outlet />
     </div>

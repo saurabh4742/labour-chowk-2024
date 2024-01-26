@@ -5,7 +5,7 @@ function LaborPortal() {
   const { userLabor} = useMyContext();
   
   return (
-    <div className='min-h-screen overflow-auto bg-green-300 bg-opacity-60'>
+    <div className='min-h-screen overflow-auto'>
     {userLabor && <LaborNavbar/>}
     <Outlet/>
     </div>  

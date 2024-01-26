@@ -83,8 +83,8 @@ function LaborsCard({ FilterBy, Title, isLarge }: LaborsCardProps) {
                   <Card
                     className={
                       isLarge
-                        ? "w-[200px] md:w-[250px] shadow-md ring-2 ring-green-900 ring-opacity-80"
-                        : " w-fit h-fit shadow-md ring-2 ring-green-900 ring-opacity-80"
+                        ? "w-[200px] md:w-[250px] "
+                        : " w-fit h-fit "
                     }
                   >
                     <CardContent>
@@ -94,7 +94,7 @@ function LaborsCard({ FilterBy, Title, isLarge }: LaborsCardProps) {
                             <Badge variant={"default"} className="mt-2 w-fit">
                               {labor.availability ? "available" : "busy"}
                             </Badge>
-                            <Avatar className="shadow-md w-14 h-14 ring-2 ring-green-900 ring-opacity-80">
+                            <Avatar className=" w-14 h-14 ring-2">
                               <AvatarImage src={labor.profileImage? labor.profileImage:fallbackImages.default} />
                               <AvatarFallback>{labor.name[0]}</AvatarFallback>
                             </Avatar>
@@ -108,7 +108,7 @@ function LaborsCard({ FilterBy, Title, isLarge }: LaborsCardProps) {
                             </p>
                           </div>
                           <Link to={`/employer/${labor._id}`}>
-                            <Button className="shadow-md ring-2 ring-green-900 ring-opacity-80">View details</Button>
+                            <Button >View details</Button>
                           </Link>
                         </div>
                     </CardContent>

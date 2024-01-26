@@ -188,7 +188,7 @@ function ProfileAsLabor() {
                           onChange={handleImageChange}
                         />
                       ) : (
-                        <Avatar className='w-24 h-24 shadow-md ring-2 ring-green-900 ring-opacity-80'>
+                        <Avatar className='w-24 h-24 '>
                           <AvatarImage src={userLabor?.profileImage || fallbackImages.default} />
                           <AvatarFallback>{userLabor?.name[0]}</AvatarFallback>
                         </Avatar>
