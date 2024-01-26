@@ -34,7 +34,7 @@ function EmployerNavbar() {
     }
   };
   return (
-    <div>
+    <div className="bg-white">
             {isLoading ? (
         <Loading />
       ) : (
