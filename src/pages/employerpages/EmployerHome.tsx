@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { Navigate } from "react-router-dom";
 import LaborsCard from "./LaborsCard";
 import { useMyContext } from "../MyContext";
+import { Label } from "@/components/ui/label";
+import { Fingerprint, SearchCheck } from "lucide-react";
 function EmployerHome() {
   const { userEmployer } = useMyContext();
   const [searchQuery, setSearchQuery] = useState("");
@@ -17,6 +19,9 @@ function EmployerHome() {
     <div>
       {userEmployer ? (
         <>
+        <Label className="flex justify-center w-full mx-auto mt-4 text-lg text-center sm:w-3/4 md:w-2/3 lg:w-1/2 xl:w-1/3">
+        Certified <Fingerprint /> kaamgaar dhoondho! Abhi search karo<SearchCheck />
+          </Label>
           <div className="flex justify-center w-full mt-4">
             <Input
               className="bg-white shadow-md max-w-80 ring-2 ring-gray-600 ring-opacity-40"
