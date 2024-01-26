@@ -34,11 +34,11 @@ function EmployerHome() {
                 <AvatarFallback>LC</AvatarFallback>
               </Avatar>
           </div>
-          <div >
-            <Label className="w-full mx-auto mt-4 text-2xl text-center sm:w-3/4 md:w-2/3 lg:w-1/2 xl:w-1/3">
+         
+            <Label className="flex justify-center w-full mx-auto mt-4 text-2xl text-center sm:w-3/4 md:w-2/3 lg:w-1/2 xl:w-1/3">
               Labor Chowk welcomes you, Mr./Mrs. {userEmployer?.name}!
             </Label>
-          </div>
+         
           {searchQuery ? (
             <LaborsCard
               FilterBy={searchQuery}
