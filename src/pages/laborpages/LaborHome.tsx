@@ -3,6 +3,8 @@ import { Navigate } from "react-router-dom";
 import { useMyContext } from "../MyContext";
 import JobsCard from "./JobsCard";
 import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 function LaborHome() {
   const { userLabor } = useMyContext();
   const [searchQuery, setSearchQuery] = useState("");
@@ -22,6 +24,16 @@ function LaborHome() {
               value={searchQuery}
               onChange={handleSearch}
             />
+          </div>
+          <div>
+          <Label className="text-2xl">
+              Labor Chowk
+              <Avatar className="w-20 h-20">
+                <AvatarImage src="https://i.ibb.co/DMv1hxq/logo.jpg" />
+                <AvatarFallback>LC</AvatarFallback>
+              </Avatar>
+              welcomes you, Mr./Mrs. {userLabor?.name}!
+            </Label>
           </div>
           {searchQuery ? (
             <JobsCard
