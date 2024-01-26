@@ -9,7 +9,9 @@ function LaborHome() {
   const { userLabor } = useMyContext();
   const [searchQuery, setSearchQuery] = useState("");
 
-  const handleSearch = (event: { target: { value: React.SetStateAction<string>; }; }) => {
+  const handleSearch = (event: {
+    target: { value: React.SetStateAction<string> };
+  }) => {
     setSearchQuery(event.target.value);
   };
 
@@ -25,14 +27,15 @@ function LaborHome() {
               onChange={handleSearch}
             />
           </div>
+          <div className="flex justify-center w-full mt-4">
+            <Avatar>
+              <AvatarImage src="https://i.ibb.co/DMv1hxq/logo.jpg" />
+              <AvatarFallback>LC</AvatarFallback>
+            </Avatar>
+          </div>
           <div>
-          <Label className="text-2xl">
-              Labor Chowk
-              <Avatar className="w-20 h-20">
-                <AvatarImage src="https://i.ibb.co/DMv1hxq/logo.jpg" />
-                <AvatarFallback>LC</AvatarFallback>
-              </Avatar>
-              welcomes you, Mr./Mrs. {userLabor?.name}!
+            <Label className="text-2xl">
+              Labor Chowk welcomes you, Mr./Mrs. {userLabor?.name}!
             </Label>
           </div>
           {searchQuery ? (

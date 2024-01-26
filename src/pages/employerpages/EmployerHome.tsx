@@ -29,13 +29,14 @@ function EmployerHome() {
             />
           </div>
           <div className="flex justify-center w-full mt-4">
-            <Label className="text-2xl">
-              Labor Chowk
-              <Avatar className="w-20 h-20">
+          <Avatar>
                 <AvatarImage src="https://i.ibb.co/DMv1hxq/logo.jpg" />
                 <AvatarFallback>LC</AvatarFallback>
               </Avatar>
-              welcomes you, Mr./Mrs. {userEmployer?.name}!
+          </div>
+          <div className="flex justify-center w-full mt-4">
+            <Label className="text-2xl">
+              Labor Chowk welcomes you, Mr./Mrs. {userEmployer?.name}!
             </Label>
           </div>
           {searchQuery ? (
