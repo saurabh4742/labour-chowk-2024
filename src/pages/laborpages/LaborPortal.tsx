@@ -10,7 +10,7 @@ function LaborPortal() {
   return (
     <div className="min-h-screen overflow-auto">
       {userLabor && <LaborNavbar />}
-      {userLabor && (
+      {userLabor && ( 
         <>
           <div className="flex justify-center w-full mt-4">
             <Avatar className="w-20 h-20">
