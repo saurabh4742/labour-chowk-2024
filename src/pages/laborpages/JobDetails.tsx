@@ -90,7 +90,7 @@ function JobDetails() {
       {!userLabor ? (
         <Navigate to="/labor/login" />
       ) : (
-        <Card className="w-[350px]  ">
+        <Card className="w-[350px] shadow-md ring-2 ring-green-400 ring-opacity-200 ">
           {job ? (
             <>
               <CardHeader>

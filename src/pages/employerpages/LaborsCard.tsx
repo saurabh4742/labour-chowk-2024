@@ -83,8 +83,8 @@ function LaborsCard({ FilterBy, Title, isLarge }: LaborsCardProps) {
                   <Card
                     className={
                       isLarge
-                        ? "w-[200px] md:w-[250px] "
-                        : " w-fit h-fit"
+                        ? "w-[200px] md:w-[250px] shadow-md ring-2 ring-green-400 ring-opacity-200"
+                        : " w-fit h-fit shadow-md ring-2 ring-green-400 ring-opacity-200"
                     }
                   >
                     <CardContent>
@@ -94,7 +94,7 @@ function LaborsCard({ FilterBy, Title, isLarge }: LaborsCardProps) {
                             <Badge variant={"default"} className="mt-2 w-fit">
                               {labor.availability ? "available" : "busy"}
                             </Badge>
-                            <Avatar className=" w-14 h-14">
+                            <Avatar className=" w-14 h-14 shadow-md ring-2 ring-green-900 ring-opacity-80">
                               <AvatarImage src={labor.profileImage? labor.profileImage:fallbackImages.default} />
                               <AvatarFallback>{labor.name[0]}</AvatarFallback>
                             </Avatar>
@@ -108,7 +108,7 @@ function LaborsCard({ FilterBy, Title, isLarge }: LaborsCardProps) {
                             </p>
                           </div>
                           <Link to={`/employer/${labor._id}`}>
-                            <Button>View details</Button>
+                            <Button className="shadow-md ring-2 ring-green-900 ring-opacity-80">View details</Button>
                           </Link>
                         </div>
                       )}
@@ -120,7 +120,7 @@ function LaborsCard({ FilterBy, Title, isLarge }: LaborsCardProps) {
                               <strong>Experience</strong> {labor.experience} years
                             </p>
                             <Link to={`/employer/${labor._id}`}>
-                              <Button>View details</Button>
+                              <Button className="shadow-md ring-2 ring-green-900 ring-opacity-80">View details</Button>
                             </Link>
                           </div>
                         </div>
