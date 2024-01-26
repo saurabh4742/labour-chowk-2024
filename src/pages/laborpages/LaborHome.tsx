@@ -35,7 +35,7 @@ function LaborHome() {
           </div>
           
             <Label className="flex justify-center w-full mx-auto mt-4 text-2xl sm:w-3/4 md:w-2/3 lg:w-1/2 xl:w-1/3">
-              Labor Chowk welcomes you, Mr./Mrs. {userLabor?.name}!
+              Labor Chowk welcomes you<br/>Mr./Mrs. {userLabor?.name}!
             </Label>
           {searchQuery ? (
             <JobsCard
