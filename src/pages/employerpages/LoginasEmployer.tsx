@@ -55,7 +55,7 @@ function LoginasEmployer() {
       ) : isLoading ? (
         <Loading/>
       ) : (
-      <Card className="w-[350px]  ">
+      <Card className="w-[350px]  shadow-md">
         <CardHeader>
           <Link className="flex justify-center" to="/labor/login">
             <Button>

@@ -73,7 +73,7 @@ function JobsCard({ FilterBy, Title, isLarge }: JobsCardProps) {
         <Carousel className="flex-col w-full ">
           {/*max-w-sm */}
           {!isLarge && (
-            <p className="flex justify-center my-3 text-xl bg-white shadow-md ring-gray-600 ring-opacity-40">
+            <p className="flex justify-center my-3 text-xl bg-white shadow-md ring-2 ring-gray-600 ring-opacity-40">
               {Title}
             </p>
           )}
@@ -88,8 +88,8 @@ function JobsCard({ FilterBy, Title, isLarge }: JobsCardProps) {
                   <Card
                     className={
                       isLarge
-                        ? "w-[200px] md:w-[250px] "
-                        : " w-fit h-fit "
+                        ? "w-[200px] md:w-[250px] shadow-md"
+                        : " w-fit h-fit shadow-md"
                     }
                   >
                     <CardContent>
@@ -105,7 +105,7 @@ function JobsCard({ FilterBy, Title, isLarge }: JobsCardProps) {
                             >
                               New
                             </Badge>
-                            <Avatar className="w-10 h-10 ">
+                            <Avatar className="w-10 h-10 shadow-md">
                               <AvatarImage  />
                               <AvatarFallback>{job.title[0]}</AvatarFallback>
                             </Avatar>

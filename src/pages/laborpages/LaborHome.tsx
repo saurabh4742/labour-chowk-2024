@@ -3,6 +3,7 @@ import { Navigate } from "react-router-dom";
 import { useMyContext } from "../MyContext";
 import JobsCard from "./JobsCard";
 import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 function LaborHome() {
   const { userLabor } = useMyContext();
   const [searchQuery, setSearchQuery] = useState("");
@@ -23,7 +24,9 @@ function LaborHome() {
               onChange={handleSearch}
             />
           </div>
-
+          <div className="flex justify-center w-full mt-4">
+            <Label>Labor Chowk welcomes you, Mr./Mrs. {userLabor?.name}! </Label>
+          </div>
           {searchQuery ? (
             <JobsCard
               FilterBy={searchQuery}

@@ -71,7 +71,7 @@ function ManageVacancy() {
   ) : (
     <div className="flex flex-wrap justify-center w-full gap-5 mt-4">
       {vacancies.map((vacancy) => (
-        <Card key={vacancy._id} className="md:w-[350px] w-[300px] ">
+        <Card key={vacancy._id} className="md:w-[350px] w-[300px] shadow-md">
           <CardHeader>
             <CardTitle className="flex justify-center space-y-1.5">
             Created on {new Date(vacancy.createdAt).toLocaleString()}
