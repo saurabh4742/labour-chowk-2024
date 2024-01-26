@@ -34,7 +34,7 @@ function LaborHome() {
             </Avatar>
           </div>
           <div>
-            <Label className="text-2xl">
+            <Label className="flex justify-center w-full mt-4 text-2xl">
               Labor Chowk welcomes you, Mr./Mrs. {userLabor?.name}!
             </Label>
           </div>

@@ -34,8 +34,8 @@ function EmployerHome() {
                 <AvatarFallback>LC</AvatarFallback>
               </Avatar>
           </div>
-          <div className="flex justify-center w-full mt-4">
-            <Label className="text-2xl">
+          <div >
+            <Label className="flex justify-center w-full mt-4 text-2xl">
               Labor Chowk welcomes you, Mr./Mrs. {userEmployer?.name}!
             </Label>
           </div>
