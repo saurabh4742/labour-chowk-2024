@@ -35,11 +35,11 @@ function LaborNavbar() {
     }
   };
   return (
-    <div className="bg-white" >
+    <div >
       {isLoading ? (
         <Loading />
       ) : (
-        <Menubar className="justify-between shadow-md ">
+        <Menubar className="justify-between bg-white shadow-md">
           <MenubarMenu>
             <Avatar className=" w-fit">
               <AvatarImage src="https://i.ibb.co/DMv1hxq/logo.jpg" />
