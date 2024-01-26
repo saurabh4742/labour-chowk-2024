@@ -68,7 +68,7 @@ function LaborsCard({ FilterBy, Title, isLarge }: LaborsCardProps) {
         <Carousel className="flex-col w-full ">
           {/*max-w-sm */}
           {!isLarge && (
-            <p className="flex justify-center my-3 text-xl bg-white shadow-md ring-2 ring-gray-600 ring-opacity-40">
+            <p className="flex justify-center my-3 text-xl bg-white shadow-md ring-gray-600 ring-opacity-40">
               {Title}
             </p>
           )}
@@ -94,7 +94,7 @@ function LaborsCard({ FilterBy, Title, isLarge }: LaborsCardProps) {
                             <Badge variant={"default"} className="mt-2 w-fit">
                               {labor.availability ? "available" : "busy"}
                             </Badge>
-                            <Avatar className=" w-14 h-14 ring-2">
+                            <Avatar className=" w-14 h-14">
                               <AvatarImage src={labor.profileImage? labor.profileImage:fallbackImages.default} />
                               <AvatarFallback>{labor.name[0]}</AvatarFallback>
                             </Avatar>

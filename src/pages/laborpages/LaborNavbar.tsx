@@ -39,7 +39,7 @@ function LaborNavbar() {
       {isLoading ? (
         <Loading />
       ) : (
-        <Menubar className="justify-between shadow-md ring-2 ">
+        <Menubar className="justify-between shadow-md ">
           <MenubarMenu>
             <Avatar className=" w-fit">
               <AvatarImage src="https://i.ibb.co/DMv1hxq/logo.jpg" />
