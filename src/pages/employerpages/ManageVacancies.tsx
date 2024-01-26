@@ -99,7 +99,9 @@ function ManageVacancy() {
                 <strong>Daily Salary: </strong>
                 {vacancy.dailySalary}
               </p>
-              <Button>
+              <Button onClick={()=>{
+                toast.success("Coming Soon stay tuned!!")
+              }}>
                 <Send className="w-4 h-4 mr-2" />
                 View Responses
               </Button>
