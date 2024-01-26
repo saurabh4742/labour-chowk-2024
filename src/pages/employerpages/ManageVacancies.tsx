@@ -51,7 +51,7 @@ function ManageVacancy() {
       setIsLoading(false)
 
       if (response.status === 200) {
-        toast.success(response.data.message + "please refresh");
+        toast.success(response.data.message + " please refresh");
         setVacancies((prevVacancies) =>
           prevVacancies.filter((v) => v._id !== vacancy._id)
         );
