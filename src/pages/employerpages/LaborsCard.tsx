@@ -38,16 +38,22 @@ function LaborsCard({ FilterBy, Title, isLarge }: LaborsCardProps) {
       }
       const data: Labor[] = response.data;
 
-      if (!isLarge && FilterBy === "pincode" && userEmployer && userEmployer.pincode) {
+      if (
+        !isLarge &&
+        FilterBy === "pincode" &&
+        userEmployer &&
+        userEmployer.pincode
+      ) {
         const filteredLabors = data.filter(
           (labor) => labor.pincode === userEmployer.pincode
         );
         setLabors(filteredLabors);
       } else if (isLarge && !(FilterBy === "None")) {
         const filteredLabors = data.filter((labor) =>
-          labor.skills.map((skill)=>{
-              skill.toLowerCase().includes(FilterBy.toLowerCase())
-          }));
+          labor.skills.map((skill) => {
+            skill.toLowerCase().includes(FilterBy.toLowerCase());
+          })
+        );
         setLabors(filteredLabors);
       } else {
         setLabors(data);
@@ -78,39 +84,41 @@ function LaborsCard({ FilterBy, Title, isLarge }: LaborsCardProps) {
             }
           >
             {Labors.map((labor) => (
-              <CarouselItem key={labor._id} className="pl-1 basis-1/2 md:basis-1/6">
+              <CarouselItem
+                key={labor._id}
+                className="pl-1 basis-1/2 md:basis-1/6"
+              >
                 <div className="p-2">
-                  <Card
-                    className={
-                      isLarge
-                        ? "w-[200px] md:w-[250px] shadow-md"
-                        : " w-[200px] md:w-[250px] shadow-md"
-                    }
-                  >
+                  <Card className="w-[200px] md:w-[250px] shadow-md ">
                     <CardContent>
-                      
-                        <div className="grid items-center w-full gap-4">
-                          <div className="flex flex-col space-y-1.5">
-                            <Badge variant="secondary" className="mt-2 w-fit">
-                              {labor.availability ? "available" : "busy"}
-                            </Badge>
-                            <Avatar className="shadow-md w-14 h-14">
-                              <AvatarImage src={labor.profileImage? labor.profileImage:fallbackImages.default} />
-                              <AvatarFallback>{labor.name[0]}</AvatarFallback>
-                            </Avatar>
-                            <p>
-                              <strong>Job: </strong>
-                              {labor.skills}
-                            </p>
-                            <p>
-                              <strong>Experience: </strong>
-                              {labor.experience} years
-                            </p>
-                          </div>
-                          <Link to={`/employer/${labor._id}`}>
-                            <Button >View details</Button>
-                          </Link>
+                      <div className="grid items-center w-full gap-4">
+                        <div className="flex flex-col space-y-1.5">
+                          <Badge variant="secondary" className="mt-2 w-fit">
+                            {labor.availability ? "available" : "busy"}
+                          </Badge>
+                          <Avatar className="shadow-md w-14 h-14">
+                            <AvatarImage
+                              src={
+                                labor.profileImage
+                                  ? labor.profileImage
+                                  : fallbackImages.default
+                              }
+                            />
+                            <AvatarFallback>{labor.name[0]}</AvatarFallback>
+                          </Avatar>
+                          <p>
+                            <strong>Job: </strong>
+                            {labor.skills}
+                          </p>
+                          <p>
+                            <strong>Experience: </strong>
+                            {labor.experience} years
+                          </p>
                         </div>
+                        <Link to={`/employer/${labor._id}`}>
+                          <Button>View details</Button>
+                        </Link>
+                      </div>
                     </CardContent>
                   </Card>
                 </div>

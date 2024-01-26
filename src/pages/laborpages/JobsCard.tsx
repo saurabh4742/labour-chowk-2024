@@ -28,9 +28,12 @@ function JobsCard({ FilterBy, Title, isLarge }: JobsCardProps) {
 
   const fetchJobs = async () => {
     try {
-      const response = await axios.get("https://labor-chowk-api.vercel.app/api/vacancy/all", {
-        withCredentials: true,
-      });
+      const response = await axios.get(
+        "https://labor-chowk-api.vercel.app/api/vacancy/all",
+        {
+          withCredentials: true,
+        }
+      );
 
       if (!(response.status === 200)) {
         throw new Error("Failed to fetch jobs");
@@ -49,9 +52,8 @@ function JobsCard({ FilterBy, Title, isLarge }: JobsCardProps) {
         );
         setJobs(filteredJobs);
       } else if (isLarge && !(FilterBy === "None")) {
-        const filteredJobs = data.filter(
-          (job) =>
-            job.title.toLowerCase().includes(FilterBy.toLowerCase())
+        const filteredJobs = data.filter((job) =>
+          job.title.toLowerCase().includes(FilterBy.toLowerCase())
         );
         setJobs(filteredJobs);
       } else {
@@ -85,46 +87,29 @@ function JobsCard({ FilterBy, Title, isLarge }: JobsCardProps) {
             {Jobs.map((job, index) => (
               <CarouselItem key={index} className="pl-1 basis-1/2 md:basis-1/6">
                 <div className="p-2">
-                  <Card
-                    className={
-                      isLarge
-                        ? "w-[200px] md:w-[250px] shadow-md"
-                        : " w-[200px] md:w-[250px] shadow-md"
-                    }
-                  >
+                  <Card className="w-[200px] md:w-[250px] shadow-md">
                     <CardContent>
-                      
-                        <div className="grid items-center w-full gap-4">
-                          <div className="flex flex-col space-y-1.5">
-                            <Badge
-                              variant={
-                                
-                                  "default"
-                              }
-                              className="mt-2 w-fit"
-                            >
-                              New
-                            </Badge>
-                            <Avatar className="w-10 h-10 shadow-md">
-                              <AvatarImage  />
-                              <AvatarFallback>{job.title[0]}</AvatarFallback>
-                            </Avatar>
-                            <p>
-                              <strong>Need: </strong>
-                              {job.title}
-                            </p>
-                            <p>
-                              <strong>Daily: </strong>
-                              ₹ {job.dailySalary}
-                            </p>
-                          </div>
-                          <Link to={`/labor/${job._id}`} >
-                            <Button 
-                            >
-                              View details
-                            </Button>
-                            </Link>
+                      <div className="grid items-center w-full gap-4">
+                        <div className="flex flex-col space-y-1.5">
+                          <Badge variant={"default"} className="mt-2 w-fit">
+                            New
+                          </Badge>
+                          <Avatar className="w-10 h-10 shadow-md">
+                            <AvatarImage />
+                            <AvatarFallback>{job.title[0]}</AvatarFallback>
+                          </Avatar>
+                          <p>
+                            <strong>Need: </strong>
+                            {job.title}
+                          </p>
+                          <p>
+                            <strong>Daily: </strong>₹ {job.dailySalary}
+                          </p>
                         </div>
+                        <Link to={`/labor/${job._id}`}>
+                          <Button>View details</Button>
+                        </Link>
+                      </div>
                     </CardContent>
                   </Card>
                 </div>
