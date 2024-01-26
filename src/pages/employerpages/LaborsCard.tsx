@@ -84,7 +84,7 @@ function LaborsCard({ FilterBy, Title, isLarge }: LaborsCardProps) {
                     className={
                       isLarge
                         ? "w-[200px] md:w-[250px] shadow-md"
-                        : " w-fit h-fit shadow-md"
+                        : " w-[200px] md:w-[250px] shadow-md"
                     }
                   >
                     <CardContent>

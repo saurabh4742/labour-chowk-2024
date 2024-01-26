@@ -89,7 +89,7 @@ function JobsCard({ FilterBy, Title, isLarge }: JobsCardProps) {
                     className={
                       isLarge
                         ? "w-[200px] md:w-[250px] shadow-md"
-                        : " w-fit h-fit shadow-md"
+                        : " w-[200px] md:w-[250px] shadow-md"
                     }
                   >
                     <CardContent>
