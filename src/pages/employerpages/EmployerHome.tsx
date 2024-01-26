@@ -20,7 +20,7 @@ function EmployerHome() {
       {userEmployer ? (
         <>
         <Label className="flex justify-center w-full mx-auto mt-6 text-xl text-center sm:w-3/4 md:w-2/3 lg:w-1/2 xl:w-1/3">
-        Certified<Fingerprint className="mx-2 " />kaamgaar dhundhe<SearchCheck className="mx-2 "/>!
+        Certified<Fingerprint className="mx-2 bg-green-600" />kaamgaar dhundhe<SearchCheck className="mx-2 "/>!
           </Label>
           <div className="flex justify-center w-full mt-4">
             <Input
