@@ -91,7 +91,7 @@ function LaborsCard({ FilterBy, Title, isLarge }: LaborsCardProps) {
                       
                         <div className="grid items-center w-full gap-4">
                           <div className="flex flex-col space-y-1.5">
-                            <Badge variant={"default"} className="mt-2 w-fit">
+                            <Badge variant="secondary" className="mt-2 w-fit">
                               {labor.availability ? "available" : "busy"}
                             </Badge>
                             <Avatar className="shadow-md w-14 h-14">

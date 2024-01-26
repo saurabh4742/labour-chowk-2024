@@ -3,7 +3,7 @@ import { Navigate } from "react-router-dom";
 import { useMyContext } from "../MyContext";
 import JobsCard from "./JobsCard";
 import { Input } from "@/components/ui/input";
-import { SearchCheck, ShieldCheck } from "lucide-react";
+import { ShieldCheck } from "lucide-react";
 import { Label } from "@/components/ui/label";
 
 function LaborHome() {
@@ -21,7 +21,7 @@ function LaborHome() {
       {userLabor ? (
         <>
         <Label className="flex justify-center w-full mx-auto mt-6 text-xl text-center sm:w-3/4 md:w-2/3 lg:w-1/2 xl:w-1/3">
-        Authentic<ShieldCheck className="mx-2" />job opportunities dhundhe<SearchCheck/>!
+        Authentic<ShieldCheck className="mx-2" />job opportunities dhundhe!
           </Label>
           <div className="flex justify-center w-full mt-4">
             <Input
