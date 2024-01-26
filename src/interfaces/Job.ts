@@ -9,6 +9,7 @@ interface Job extends Document {
   areaPincode: string;
   dailySalary: number;
   employer: Employer['_id']; // Reference to Employer _id
+  createdAt: Date;
 }
 
 export default Job;

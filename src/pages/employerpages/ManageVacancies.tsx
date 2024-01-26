@@ -74,7 +74,7 @@ function ManageVacancy() {
         <Card key={vacancy._id} className="md:w-[350px] w-[300px]">
           <CardHeader>
             <CardTitle className="flex justify-center space-y-1.5">
-              Vacancy
+            Created on {new Date(vacancy.createdAt).toLocaleString()}
             </CardTitle>
           </CardHeader>
           <CardContent>
