@@ -38,7 +38,7 @@ function EmployerNavbar() {
             {isLoading ? (
         <Loading />
       ) : (
-      <Menubar className="justify-between shadow-md ">
+      <Menubar className="justify-between shadow-2xl ">
         <MenubarMenu>
           <Avatar className=" w-fit">
             <AvatarImage src="https://i.ibb.co/DMv1hxq/logo.jpg" />
