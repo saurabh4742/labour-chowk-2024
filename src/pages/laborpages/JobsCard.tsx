@@ -93,7 +93,7 @@ function JobsCard({ FilterBy, Title, isLarge }: JobsCardProps) {
                     }
                   >
                     <CardContent>
-                      {isLarge && (
+                      
                         <div className="grid items-center w-full gap-4">
                           <div className="flex flex-col space-y-1.5">
                             <Badge
@@ -125,24 +125,6 @@ function JobsCard({ FilterBy, Title, isLarge }: JobsCardProps) {
                             </Button>
                             </Link>
                         </div>
-                      )}
-                      {!isLarge && (
-                        <div className="grid items-center gap-2 w-fit">
-                          <div className="flex flex-col ">
-                            <p>{job.title}</p>
-                            <p>
-                              <strong>Daily</strong> ₹{job.dailySalary}
-                            </p>
-                            <Link to={`/labor/${job._id}`} >
-                            <Button className="shadow-md ring-2 ring-green-900 ring-opacity-80"
-                            >
-                              View details
-                            </Button>
-                            </Link>
-                            
-                          </div>
-                        </div>
-                      )}
                     </CardContent>
                   </Card>
                 </div>

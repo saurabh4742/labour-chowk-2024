@@ -88,13 +88,13 @@ function LaborsCard({ FilterBy, Title, isLarge }: LaborsCardProps) {
                     }
                   >
                     <CardContent>
-                      {isLarge && (
+                      
                         <div className="grid items-center w-full gap-4">
                           <div className="flex flex-col space-y-1.5">
                             <Badge variant={"default"} className="mt-2 w-fit">
                               {labor.availability ? "available" : "busy"}
                             </Badge>
-                            <Avatar className="shadow-md  w-14 h-14 ring-2 ring-green-900 ring-opacity-80">
+                            <Avatar className="shadow-md w-14 h-14 ring-2 ring-green-900 ring-opacity-80">
                               <AvatarImage src={labor.profileImage? labor.profileImage:fallbackImages.default} />
                               <AvatarFallback>{labor.name[0]}</AvatarFallback>
                             </Avatar>
@@ -111,20 +111,6 @@ function LaborsCard({ FilterBy, Title, isLarge }: LaborsCardProps) {
                             <Button className="shadow-md ring-2 ring-green-900 ring-opacity-80">View details</Button>
                           </Link>
                         </div>
-                      )}
-                      {!isLarge && (
-                        <div className="grid items-center gap-2 w-fit">
-                          <div className="flex flex-col ">
-                            <p>{labor.skills}</p>
-                            <p>
-                              <strong>Experience</strong> {labor.experience} years
-                            </p>
-                            <Link to={`/employer/${labor._id}`}>
-                              <Button className="shadow-md ring-2 ring-green-900 ring-opacity-80">View details</Button>
-                            </Link>
-                          </div>
-                        </div>
-                      )}
                     </CardContent>
                   </Card>
                 </div>
