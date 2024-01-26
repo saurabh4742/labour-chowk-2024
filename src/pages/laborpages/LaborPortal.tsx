@@ -3,6 +3,7 @@ import LaborNavbar from "./LaborNavbar";
 import { useMyContext } from "../MyContext";
 import { Label } from "@/components/ui/label";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+
 function LaborPortal() {
   const { userLabor } = useMyContext();
 
