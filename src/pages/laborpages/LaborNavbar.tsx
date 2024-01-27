@@ -14,6 +14,7 @@ import axios from "axios";
 import Loading from "../Loading";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { Skeleton } from "@/components/ui/skeleton";
 function LaborNavbar() {
   const [isLoading, setIsLoading] = useState(false);
   const { userLabor, setUserLabor } = useMyContext();
@@ -43,7 +44,7 @@ function LaborNavbar() {
           <MenubarMenu>
             <Avatar className=" w-fit">
               <AvatarImage src="https://i.ibb.co/DMv1hxq/logo.jpg" />
-              <AvatarFallback>LC</AvatarFallback>
+              <AvatarFallback><Skeleton className="w-12 h-12 rounded-full" /></AvatarFallback>
             </Avatar>
           </MenubarMenu>
           <MenubarMenu>
@@ -65,7 +66,7 @@ function LaborNavbar() {
                   <MenubarSeparator />
                   <MenubarItem
                     onClick={handleLogout}
-                    className="bg-red-600 text-slate-50"
+                    className="bg-destructive text-slate-50"
                   >
                     Logout
                   </MenubarItem>

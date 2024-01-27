@@ -10,6 +10,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Link } from "react-router-dom";
+import { Skeleton } from "@/components/ui/skeleton";
 function LandingPage() {
   return (
     <Card className=" w-[350px] shadow-md">
@@ -26,7 +27,7 @@ function LandingPage() {
           <div className="flex justify-center h-20 space-y-1.5">
             <Avatar className="w-20 h-20">
               <AvatarImage src="https://i.ibb.co/DMv1hxq/logo.jpg" />
-              <AvatarFallback>CN</AvatarFallback>
+              <AvatarFallback><Skeleton className="w-12 h-12 rounded-full" /></AvatarFallback>
             </Avatar>
           </div>
           <div className="flex flex-col space-y-1.5">

@@ -16,6 +16,7 @@ import { useMyContext } from "../MyContext";
 import { useEffect, useState } from "react";
 import Loading from "../Loading";
 import axios from "axios";
+import { Skeleton } from "@/components/ui/skeleton";
 function JobDetails() {
   const { userLabor } = useMyContext();
   const params = useParams();
@@ -108,7 +109,7 @@ function JobDetails() {
                               : fallbackImages.default
                           }
                         />
-                        <AvatarFallback>{job.title}</AvatarFallback>
+                        <AvatarFallback><Skeleton className="w-12 h-12 rounded-full" /></AvatarFallback>
                       </Avatar>
                     </div>
                     <p>

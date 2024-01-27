@@ -15,6 +15,7 @@ import axios from "axios";
 import Loading from "../Loading";
 import fallbackImages from "../../../image/fallback";
 import { useMyContext } from "../MyContext";
+import { Skeleton } from "@/components/ui/skeleton";
 function LaborDetails() {
   const { userEmployer } = useMyContext();
   const params = useParams();
@@ -90,7 +91,7 @@ function LaborDetails() {
                               : fallbackImages.default
                           }
                         />
-                        <AvatarFallback>{labor.name}</AvatarFallback>
+                        <AvatarFallback><Skeleton className="w-12 h-12 rounded-full" /></AvatarFallback>
                       </Avatar>
                     </div>
                     <p>

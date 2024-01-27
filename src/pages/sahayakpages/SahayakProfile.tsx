@@ -20,8 +20,8 @@ import axios from 'axios';
 import { Navigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { Skeleton } from '@/components/ui/skeleton';
-function ProfileAsEmployer() {
-  const { userEmployer} = useMyContext();
+function ProfileAsSahayak() {
+  const { userSahayak} = useMyContext();
   const [editMode, setEditMode] = useState(false);
   const [profileData, setProfileData] = useState({
     name: "",
@@ -35,13 +35,13 @@ function ProfileAsEmployer() {
     const fetchProfileData = async () => {
       try {
         setIsLoading(true);
-        const response = await axios.get('https://labor-chowk-api.vercel.app/api/auth/employer/profile', {
+        const response = await axios.get('https://labor-chowk-api.vercel.app/api/auth/sahayak/profile', {
           withCredentials: true, // Include credentials in the request
         });
         setIsLoading(false);
 
         if (response.status === 200) {
-          setProfileData(response.data.employer);
+          setProfileData(response.data.sahayak);
         } else {
           console.log('Failed to fetch profile data');
         }
@@ -93,10 +93,10 @@ function ProfileAsEmployer() {
       formData.append("name", profileData.name);
       formData.append("pincode", profileData.pincode);
       formData.append("address", profileData.address);
-      if (userEmployer?.profileImage && profileData.image) {
+      if (userSahayak?.profileImage && profileData.image) {
         // Delete existing profile image from Firebase Storage
         await axios.put(
-          `https://labor-chowk-api.vercel.app/api/employer/update/profileImage/${userEmployer._id}`
+          `https://labor-chowk-api.vercel.app/api/Sahayak/update/profileImage/${userSahayak._id}`
         );
   
       }
@@ -107,7 +107,7 @@ function ProfileAsEmployer() {
       }
   
       const response = await axios.put(
-        `https://labor-chowk-api.vercel.app/api/employer/modify/${userEmployer?._id}`,
+        `https://labor-chowk-api.vercel.app/api/sahayak/modify/${userSahayak?._id}`,
         formData,
         {
           withCredentials: true,
@@ -131,8 +131,8 @@ function ProfileAsEmployer() {
 
   return (
     <div className="flex justify-center w-full mt-4">
-      {!userEmployer ? (
-        <Navigate to="/employer/login" />
+      {!userSahayak ? (
+        <Navigate to="/sahayak/login" />
       ) : (
         <>
           {isLoading ? (
@@ -167,7 +167,7 @@ function ProfileAsEmployer() {
                         />
                       ) : (
                         <Avatar className='w-24 h-24 shadow-md'>
-                          <AvatarImage src={userEmployer?.profileImage || fallbackImages.default} />
+                          <AvatarImage src={userSahayak?.profileImage || fallbackImages.default} />
                           <AvatarFallback><Skeleton className="w-12 h-12 rounded-full" /></AvatarFallback>
                         </Avatar>
                       )}
@@ -219,4 +219,4 @@ function ProfileAsEmployer() {
   );
 }
 
-export default ProfileAsEmployer
+export default ProfileAsSahayak

@@ -15,18 +15,18 @@ import Loading from "../Loading";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { Skeleton } from "@/components/ui/skeleton";
-function EmployerNavbar() {
- const {userEmployer,setUserEmployer}=useMyContext()
+function SahayakNavbar() {
+ const {userSahayak,setUserSahayak}=useMyContext()
  const [isLoading, setIsLoading] = useState(false);
   const handleLogout = async () => {
     try {
       setIsLoading(true);
       const response = await axios.get(
-        "https://labor-chowk-api.vercel.app/api/auth/employer/logout", {
+        "https://labor-chowk-api.vercel.app/api/auth/sahayak/logout", {
           withCredentials: true, // Include credentials in the request
         })
       if(response.status==200)  
-      setUserEmployer(null);
+      setUserSahayak(null);
       setIsLoading(false);
       toast.success(response.data.message)     
     } catch (error) {
@@ -51,14 +51,14 @@ function EmployerNavbar() {
             <Menu />
           </MenubarTrigger>
           <MenubarContent>
-            <MenubarItem><Link to="/employer">Home</Link></MenubarItem>
-            {userEmployer && <>
+            <MenubarItem><Link to="/sahayak">Navbar</Link></MenubarItem>
+            {userSahayak && <>
               <MenubarSeparator />
-            <MenubarItem><Link to="/employer/profile">Profile</Link></MenubarItem>
+            <MenubarItem><Link to="/sahayak/profile">Profile</Link></MenubarItem>
             <MenubarSeparator />
-            <MenubarItem><Link to="/employer/createavacancy">Create a vacancy</Link></MenubarItem>
+            <MenubarItem><Link to="/sahayak/createavacancy">Create Labours</Link></MenubarItem>
             <MenubarSeparator />
-            <MenubarItem><Link to="/employer/managevacancies">Manage vacancies</Link></MenubarItem>
+            <MenubarItem><Link to="/sahayak/managevacancies">Manage Labours</Link></MenubarItem>
             <MenubarSeparator />
             <MenubarItem><Link to="/support">Support</Link></MenubarItem>
             <MenubarSeparator />
@@ -74,4 +74,4 @@ function EmployerNavbar() {
   );
 }
 
-export default EmployerNavbar;
+export default SahayakNavbar;
