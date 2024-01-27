@@ -37,12 +37,16 @@ function LandingPage() {
               </Button>
             </Link>
           </div>
+          
           <div className="flex flex-col space-y-1.5">
+          <Link className="flex justify-center" to="/home" >
             <Button onClick={()=>{
               toast.success("Feature coming soon!")
             }}>
               <Users className="w-4 h-4 mr-2" /> Continue as middelman
             </Button>
+            </Link>
+
           </div>
           <div className="flex flex-col space-y-1.5">
             <Link className="flex justify-center" to="/employer">
