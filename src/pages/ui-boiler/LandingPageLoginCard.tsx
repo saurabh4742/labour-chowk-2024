@@ -33,7 +33,7 @@ function LandingPage() {
             <Link className="flex justify-center" to="/labor">
               <Button>
                 <User className="w-4 h-4 mr-2" />
-                Continue as labor
+                Continue as Labour
               </Button>
             </Link>
           </div>
@@ -42,7 +42,7 @@ function LandingPage() {
             <Button onClick={()=>{
               toast.success("Feature coming soon!")
             }}>
-              <Speech className="w-4 h-4 mr-2" /> Continue as middelman
+              <Speech className="w-4 h-4 mr-2" /> Continue as Sahayak
             </Button>
             </Link>
 
@@ -50,7 +50,7 @@ function LandingPage() {
           <div className="flex flex-col space-y-1.5">
             <Link className="flex justify-center" to="/employer">
               <Button>
-                <Users className="w-4 h-4 mr-2" /> Continue as employer
+                <Users className="w-4 h-4 mr-2" /> Continue as Employer
               </Button>
             </Link>
           </div>
