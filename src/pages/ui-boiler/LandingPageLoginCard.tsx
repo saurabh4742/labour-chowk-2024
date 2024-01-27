@@ -15,7 +15,7 @@ function LandingPage() {
     <Card className=" w-[350px] shadow-md">
       <CardHeader>
         <CardTitle className="flex justify-center space-y-1.5">
-          Welcome to Labor Chowk
+          Welcome to Labour Chowk
         </CardTitle>
         <CardDescription className="flex justify-center space-y-1.5">
           Dive into new opportunities with one-click.
