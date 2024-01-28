@@ -87,7 +87,7 @@ function SignupasSahayak() {
               <Phone className="w-4 h-4 mr-2" />
               Signup as sahayak
             </Button>
-            <Link className="flex justify-center" to="/Sahayak/login">
+            <Link className="flex justify-center" to="/sahayak/login">
               <Button variant="link">
                 Already have an account? Login now!
               </Button>

@@ -27,12 +27,12 @@ function LoginasSahayak() {
           withCredentials: true, // Include credentials in the request
         }
       );
-      let Sahayak = response.data.sahayak;
+      let sahayak = response.data.sahayak;
       setIsLoading(false); // Set loading to false after receiving the response
       if (response.status === 200) {
-         Sahayak = response.data.sahayak;
+         sahayak = response.data.sahayak;
         toast.success(response.data.message);
-        setUserSahayak(Sahayak);
+        setUserSahayak(sahayak);
       } else {
         // Handle specific HTTP error codes
         if (response.status === 400) {
