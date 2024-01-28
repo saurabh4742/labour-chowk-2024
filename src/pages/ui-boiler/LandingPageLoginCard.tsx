@@ -1,6 +1,5 @@
 import { Speech, User, Users } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import toast from "react-hot-toast";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -39,10 +38,8 @@ function LandingPage() {
             </Link>
           </div>
           <div className="flex flex-col space-y-1.5">
-          <Link className="flex justify-center" to="/home" >
-            <Button onClick={()=>{
-              toast.success("Feature coming soon!")
-            }}>
+          <Link className="flex justify-center" to="/sahayak" >
+            <Button>
               <Speech className="w-4 h-4 mr-2" /> Continue as Sahayak
             </Button>
             </Link>
