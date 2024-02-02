@@ -1,4 +1,4 @@
-import { Speech, User, Users } from "lucide-react";
+import {User, Users } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
@@ -36,14 +36,6 @@ function LandingPage() {
                 Continue as Labour
               </Button>
             </Link>
-          </div>
-          <div className="flex flex-col space-y-1.5">
-          <Link className="flex justify-center" to="/sahayak" >
-            <Button>
-              <Speech className="w-4 h-4 mr-2" /> Continue as Sahayak
-            </Button>
-            </Link>
-
           </div>
           <div className="flex flex-col space-y-1.5">
             <Link className="flex justify-center" to="/employer">

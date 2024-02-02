@@ -21,12 +21,6 @@ import LaborDetails from "./pages/employerpages/LaborDetails";
 import JobDetails from "./pages/laborpages/JobDetails";
 import SupportPage from "./pages/ui-boiler/SupportPage";
 import ManageVacancy from "./pages/employerpages/ManageVacancies";
-import SahayakPotal from "./pages/sahayakpages/SahayakPortal";
-import SahayakHome from "./pages/sahayakpages/SahayakHome";
-import LoginasSahayak from "./pages/sahayakpages/LoginAsSahayak";
-import SignupasSahayak from "./pages/sahayakpages/SignUpAsSahayak";
-import ProfileAsSahayak from "./pages/sahayakpages/SahayakProfile";
-import CreateaLabor from "./pages/sahayakpages/CreateLabors";
 
 const AppRoutes = () => {
   return (
@@ -47,13 +41,6 @@ const AppRoutes = () => {
       <Route path="createavacancy" element={<CreateaVacancy/>}/>
       <Route path="managevacancies" element={<ManageVacancy/>}/>
       <Route path=":id" element={<LaborDetails/>}/>
-      </Route>
-      <Route path="/sahayak" element={<SahayakPotal/>}>
-      <Route index element={<SahayakHome/>} />
-      <Route path="login" element={<LoginasSahayak/>}/>
-      <Route path="signup" element={<SignupasSahayak/>}/>
-      <Route path="profile" element={<ProfileAsSahayak/>}/>
-      <Route path="createalabor" element={<CreateaLabor/>}/>
       </Route>
       <Route path="/loading" element={<Loading />} />
       <Route path="/support" element={<SupportPage/>}/>
