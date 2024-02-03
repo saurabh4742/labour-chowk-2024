@@ -1,4 +1,4 @@
-Labour Chowk Web App
+# Labour Chowk Web App
 Labour Chowk is a web application designed to connect laborers and employers seamlessly. It provides a platform where laborers can register, showcase their skills, and find job opportunities. Employers, on the other hand, can browse through registered labor profiles and create job vacancies.
 
 Features
