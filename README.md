@@ -1,30 +1,62 @@
-# React + TypeScript + Vite
+Labour Chowk Web App
+Labour Chowk is a web application designed to connect laborers and employers seamlessly. It provides a platform where laborers can register, showcase their skills, and find job opportunities. Employers, on the other hand, can browse through registered labor profiles and create job vacancies.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Features
+For Laborers:
+Registration: Laborers can easily register on the platform by providing necessary information and creating a profile.
 
-Currently, two official plugins are available:
+Profile Management: Users can update their profile information and upload a profile photo to make their profiles stand out.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Job Discovery: Laborers can explore job vacancies created by employers based on preferences like location and pay scale.
 
-## Expanding the ESLint configuration
+Job Application: Applying for jobs is made simple with a click on the job cards. Laborers can express interest in suitable vacancies.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+For Employers:
+Registration: Employers can register on the platform, creating an account to access labor profiles and post job vacancies.
 
-- Configure the top-level `parserOptions` property like this:
+Profile Management: Employers can update their profiles, ensuring accurate and up-to-date information.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+Labor Exploration: Employers can browse through registered labor profiles, filtering based on various criteria.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Job Posting: Employers can create and post job vacancies, providing detailed information about the position.
+
+Hiring: Employers can review applications from interested laborers and make informed hiring decisions.
+
+Technologies Used
+React: The frontend of the application is built using the React library for a dynamic and responsive user interface.
+
+TypeScript: The codebase is written in TypeScript, adding static typing to enhance code reliability and maintainability.
+
+Getting Started
+To run the Labour Chowk web app locally, follow these steps:
+
+Clone the repository:
+
+bash
+Navigate to the project directory:
+
+bash
+Copy code
+cd labour-chowk
+Install dependencies:
+
+bash
+Copy code
+npm install
+Start the development server:
+
+bash
+Copy code
+npm start
+Open your browser and visit https://labour-chowk.vercel.app/ to access the Labour Chowk web app.
+
+Contribution Guidelines
+We welcome contributions to make Labour Chowk even better! If you want to contribute:
+
+Fork the repository.
+Create a new branch for your feature/fix: git checkout -b feature-name.
+Commit your changes: git commit -m "Description of changes".
+Push to the branch: git push origin feature-name.
+Open a pull request.
+License
+This project is licensed under the MIT License.
