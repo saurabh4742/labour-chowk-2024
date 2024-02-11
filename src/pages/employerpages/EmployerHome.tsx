@@ -5,6 +5,7 @@ import LaborsCard from "./LaborsCard";
 import { useMyContext } from "../MyContext";
 import { Label } from "@/components/ui/label";
 import { Fingerprint, SearchCheck } from "lucide-react";
+import AdSenseComponent from "@/Adsense/Ads";
 function EmployerHome() {
   const { userEmployer } = useMyContext();
   const [searchQuery, setSearchQuery] = useState("");
@@ -44,6 +45,7 @@ function EmployerHome() {
                 Title={"Labors Near You"}
                 isLarge={false}
               />
+              <AdSenseComponent/>
             </>
           )}
         </>

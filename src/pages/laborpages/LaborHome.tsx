@@ -5,6 +5,7 @@ import JobsCard from "./JobsCard";
 import { Input } from "@/components/ui/input";
 import { ShieldCheck } from "lucide-react";
 import { Label } from "@/components/ui/label";
+import AdSenseComponent from "@/Adsense/Ads";
 
 function LaborHome() {
   const { userLabor } = useMyContext();
@@ -43,6 +44,7 @@ function LaborHome() {
                 Title={"Jobs Near You"}
                 isLarge={false}
               />
+              <AdSenseComponent/>
             </>
           )}
         </>
