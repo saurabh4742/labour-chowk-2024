@@ -6,6 +6,7 @@
     "no-protocol-relative-urls": "off",
     "axe/forms": "off",
     "axe/structure": "off",
-    "axe/name-role-value": "off"
+    "axe/name-role-value": "off",
+    "no-inline-styles": "off"
   }
 }
