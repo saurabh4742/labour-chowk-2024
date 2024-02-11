@@ -8,19 +8,6 @@ declare let window: CustomWindow;
 
 const AdSenseComponent: React.FC = () => {
   const [key, setKey] = useState<number>(0);
-
-  useEffect(() => {
-    const script = document.createElement('script');
-    script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
-    script.async = true;
-    script.crossOrigin = "anonymous";
-    document.head.appendChild(script);
-
-    return () => {
-      document.head.removeChild(script);
-    };
-  }, []);
-
   useEffect(() => {
     (window.adsbygoogle = window.adsbygoogle || []).push({});
   }, [key]);
